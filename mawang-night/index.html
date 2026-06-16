@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAWANG NIGHT — 마왕족발 브랜드 이슈메이킹 프로젝트</title>
+<style>
+/* ===== Fonts ===== */
+@font-face{font-family:'BlackHanSans';src:url('fonts/BlackHanSans.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'NotoKR';src:url('fonts/NotoSansKR-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'NotoKR';src:url('fonts/NotoSansKR-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'NotoKR';src:url('fonts/NotoSansKR-900.woff2') format('woff2');font-weight:900;font-display:swap;}
+@font-face{font-family:'Cinzel';src:url('fonts/Cinzel-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'Bebas';src:url('fonts/BebasNeue.woff2') format('woff2');font-weight:400;font-display:swap;}
+
+/* ===== Tokens ===== */
+:root{
+  --ink:#0a0a0b; --ink2:#141416; --panel:#161618; --panel2:#1d1d20;
+  --blood:#c4141b; --blood-deep:#7a0a0e; --blood-soft:#e23b3f;
+  --bone:#f4f0e8; --ash:#9c9aa0; --ash-d:#6c6a70;
+  --line:rgba(196,20,27,.32); --line-soft:rgba(244,240,232,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#3a3a3c;color:var(--bone);font-family:'NotoKR',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+/* ===== Page ===== */
+@page{size:A4 landscape;margin:0;}
+.page{
+  position:relative;width:297mm;height:210mm;overflow:hidden;
+  background:radial-gradient(120% 90% at 80% -10%,#1a1416 0%,var(--ink) 46%,#060607 100%);
+  margin:0 auto;page-break-after:always;break-after:page;
+  padding:13mm 15mm 12mm;display:flex;flex-direction:column;
+}
+.page:last-child{page-break-after:auto;}
+@media screen{.page{box-shadow:0 14px 50px rgba(0,0,0,.6);margin:22px auto;}}
+@media print{html,body{background:#fff;}}
+
+/* faint grain/texture + drip accent */
+.page::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+   radial-gradient(60% 40% at 100% 100%,rgba(196,20,27,.10),transparent 60%),
+   repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);
+  mix-blend-mode:screen;}
+.edge{position:absolute;left:0;top:0;bottom:0;width:9mm;background:linear-gradient(180deg,var(--blood),var(--blood-deep));}
+.edge::after{content:"";position:absolute;right:-3px;top:0;bottom:0;width:3px;background:var(--blood-soft);opacity:.5;filter:blur(1px);}
+
+/* ===== Header / Footer ===== */
+.hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-left:6mm;}
+.brand{display:flex;align-items:center;gap:10px;}
+.emblem{width:34px;height:34px;color:var(--blood);flex:none;}
+.wm{font-family:'BlackHanSans';font-size:19px;letter-spacing:.5px;line-height:1;display:flex;}
+.wm .k{color:var(--bone);} .wm .r{color:var(--blood);}
+.wm small{display:block;font-family:'NotoKR';font-weight:700;font-size:7px;letter-spacing:3px;color:var(--ash-d);margin-top:3px;}
+.kicker{font-family:'Bebas';letter-spacing:3px;font-size:15px;color:var(--blood-soft);}
+.pno{font-family:'Bebas';font-size:14px;letter-spacing:2px;color:var(--ash-d);}
+.ft{position:absolute;left:15mm;right:15mm;bottom:7mm;display:flex;justify-content:space-between;align-items:center;
+  font-size:8.5px;letter-spacing:1.5px;color:var(--ash-d);border-top:1px solid var(--line-soft);padding-top:5px;}
+.ft .r{color:var(--blood);font-family:'Bebas';letter-spacing:2px;}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:6mm;}
+
+/* ===== Type ===== */
+.sec-no{font-family:'Bebas';font-size:14px;letter-spacing:4px;color:var(--blood);}
+.h1{font-family:'BlackHanSans';font-size:40px;line-height:1.08;letter-spacing:-.5px;color:var(--bone);}
+.h1 .r{color:var(--blood);}
+.lead{font-size:13.5px;line-height:1.7;color:var(--ash);max-width:62ch;margin-top:10px;}
+.eyebrow{font-family:'Bebas';letter-spacing:3px;font-size:16px;color:var(--blood-soft);margin-bottom:6px;}
+.tag{display:inline-block;font-family:'Bebas';letter-spacing:2px;font-size:12px;color:var(--blood);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+
+/* cards / grid */
+.grid{display:grid;gap:9px;}
+.card{background:linear-gradient(160deg,var(--panel),var(--ink2));border:1px solid var(--line-soft);
+  border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;}
+.card.red{border-color:var(--line);background:linear-gradient(160deg,#241214,#150b0c);}
+.card .ct{font-family:'NotoKR';font-weight:900;font-size:13px;color:var(--bone);margin-bottom:7px;display:flex;align-items:center;gap:7px;}
+.card .ct .dot{width:7px;height:7px;background:var(--blood);transform:rotate(45deg);flex:none;}
+.card ul{list-style:none;}
+.card li{font-size:11px;line-height:1.62;color:var(--ash);padding-left:13px;position:relative;}
+.card li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--blood);transform:rotate(45deg);}
+.card li b{color:var(--bone);font-weight:700;}
+.bignum{position:absolute;right:8px;bottom:-8px;font-family:'BlackHanSans';font-size:64px;color:rgba(196,20,27,.10);line-height:1;}
+
+.cols-2{grid-template-columns:1fr 1fr;}
+.cols-3{grid-template-columns:repeat(3,1fr);}
+.cols-4{grid-template-columns:repeat(4,1fr);}
+
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:6px;}
+.tl .slot{background:linear-gradient(160deg,var(--panel),var(--ink2));border:1px solid var(--line-soft);border-radius:11px;overflow:hidden;}
+.tl .top{background:linear-gradient(120deg,var(--blood),var(--blood-deep));padding:10px 14px;}
+.tl .time{font-family:'Bebas';font-size:21px;letter-spacing:1px;color:#fff;}
+.tl .name{font-family:'NotoKR';font-weight:900;font-size:13px;color:#fff;opacity:.95;}
+.tl .ph{padding:12px 14px;}
+.tl .ph li{font-size:10.5px;}
+
+/* table */
+.cmp{width:100%;border-collapse:collapse;margin-top:6px;font-size:11px;}
+.cmp th,.cmp td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+.cmp thead th{background:linear-gradient(120deg,var(--blood),var(--blood-deep));color:#fff;font-family:'NotoKR';font-weight:900;font-size:12px;}
+.cmp tbody th{color:var(--blood-soft);font-weight:700;width:130px;font-size:10.5px;letter-spacing:.5px;}
+.cmp td{color:var(--ash);} .cmp td b{color:var(--bone);}
+.cmp tr:nth-child(even) td,.cmp tr:nth-child(even) th{background:rgba(255,255,255,.015);}
+.ok{color:#39c07a;font-weight:700;} .wait{color:var(--ash-d);font-style:italic;}
+
+/* quote */
+.quote{font-family:'BlackHanSans';font-size:26px;line-height:1.4;color:var(--bone);}
+.quote .r{color:var(--blood);}
+
+/* cover */
+.cover{justify-content:center;align-items:flex-start;text-align:left;}
+.cover .g0{font-family:'Bebas';letter-spacing:6px;font-size:18px;color:var(--blood);}
+.cover .title{font-family:'Cinzel';font-weight:700;font-size:96px;line-height:.96;color:var(--bone);letter-spacing:2px;text-shadow:0 0 40px rgba(196,20,27,.35);}
+.cover .title .r{color:var(--blood);}
+.cover .sub{font-family:'BlackHanSans';font-size:26px;color:var(--bone);margin-top:12px;}
+.cover .sub .r{color:var(--blood);}
+.cover .meta{margin-top:26px;font-size:12px;letter-spacing:1px;color:var(--ash);}
+.cover-emblem{position:absolute;right:5mm;top:50%;transform:translateY(-50%);width:330px;height:330px;color:rgba(196,20,27,.55);
+  filter:drop-shadow(0 0 50px rgba(196,20,27,.4));}
+.cover-emblem.ghost{color:rgba(196,20,27,.13);width:520px;right:-40px;filter:none;}
+</style>
+</head>
+<body>
+
+<!-- reusable wordmark emblem -->
+<svg style="display:none"><symbol id="mask" viewBox="0 0 200 200">
+  <g stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <circle cx="100" cy="100" r="92"/>
+    <path d="M58 78 C40 60 38 38 48 26 C52 46 64 56 74 64 Z" fill="currentColor"/>
+    <path d="M142 78 C160 60 162 38 152 26 C148 46 136 56 126 64 Z" fill="currentColor"/>
+    <path d="M62 70 C70 58 130 58 138 70 C150 86 150 120 132 150 C120 168 80 168 68 150 C50 120 50 86 62 70 Z"/>
+    <path d="M70 96 C82 86 92 90 96 98 C88 100 78 102 70 102 Z" fill="currentColor"/>
+    <path d="M130 96 C118 86 108 90 104 98 C112 100 122 102 130 102 Z" fill="currentColor"/>
+    <path d="M72 124 C86 142 114 142 128 124 C120 136 110 140 100 140 C90 140 80 136 72 124 Z" fill="currentColor"/>
+    <path d="M92 150 C96 162 104 162 108 150 C104 154 96 154 92 150 Z" fill="currentColor"/>
+  </g></symbol></svg>
+
+<!-- ============ 01 COVER ============ -->
+<section class="page cover">
+  <div class="edge"></div>
+  <svg class="cover-emblem ghost"><use href="#mask"/></svg>
+  <div class="body" style="padding-left:6mm;justify-content:center;">
+    <div class="go g0">BRAND ISSUE-MAKING PROJECT</div>
+    <h1 class="title" style="margin-top:8px;">MAWANG<br><span class="r">NIGHT</span></h1>
+    <div class="sub">마왕족발 브랜드 이슈메이킹 프로젝트 <span style="font-family:'NotoKR';font-size:14px;color:var(--ash-d);">(가제)</span></div>
+    <div class="lead" style="max-width:46ch;">단순 판매형 팝업이 아니라, 마왕족발의 세계관과 분위기를<br><b style="color:var(--bone)">‘하루에 폭발적으로’</b> 경험시키는 브랜드 나이트.</div>
+    <div class="meta">대표님 보고용 · 2026.06 &nbsp;|&nbsp; <span style="color:var(--blood);">CONFIDENTIAL</span></div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">01</span></div>
+</section>
+
+<!-- ============ 02 ONE-LINE ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">CORE IDEA</div><div class="pno">02</div>
+  </div>
+  <div class="body">
+    <div class="tag">PROJECT DEFINITION</div>
+    <div class="quote" style="margin-top:22px;">“이번 프로젝트는 팝업이 아니라,<br>마왕족발이 가진 <span class="r">팬덤을 콘텐츠로 전환</span>하는<br>브랜드 미디어 프로젝트입니다.”</div>
+    <div class="grid cols-3" style="margin-top:30px;">
+      <div class="card red"><div class="ct"><span class="dot"></span>하루에 집중</div><ul><li>토요일 단 하루, <b>화제성·참여·확산</b>을 한 곳에 폭발</li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>콘텐츠가 KPI</div><ul><li>매출이 아닌 <b>콘텐츠 생성량 + 확산력</b>이 핵심 성과</li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>자산화</div><ul><li>현장 장면을 <b>브랜드 자산</b>으로 축적·재활용</li></ul></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">02</span></div>
+</section>
+
+<!-- ============ 03 배경 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">BACKGROUND</div><div class="pno">03</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">01 — 기획 전환 배경</div>
+    <h2 class="h1" style="margin-top:8px;">공실 대관 팝업,<br><span class="r">비용 대비 효율이 낮다</span></h2>
+    <p class="lead">초기에는 별도 공간 대관 + 4일 운영 팝업을 검토했으나, 아래 리소스가 추가로 발생하며
+       비용 대비 효율이 낮다고 판단했습니다.</p>
+    <div class="grid cols-4" style="margin-top:18px;">
+      <div class="card"><div class="ct"><span class="dot"></span>집기 · 장비</div><ul><li>별도 집기/장비 <b>렌탈 필요</b></li></ul><span class="bignum">01</span></div>
+      <div class="card"><div class="ct"><span class="dot"></span>운영 인력</div><ul><li>운영 스태프 <b>채용 필요</b></li></ul><span class="bignum">02</span></div>
+      <div class="card"><div class="ct"><span class="dot"></span>바 · DJ</div><ul><li>바텐더·DJ <b>별도 섭외 필요</b></li></ul><span class="bignum">03</span></div>
+      <div class="card"><div class="ct"><span class="dot"></span>운영 리스크</div><ul><li>운영 피로도·변수 <b>과도하게 증가</b></li></ul><span class="bignum">04</span></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">03</span></div>
+</section>
+
+<!-- ============ 04 핵심 방향 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">DIRECTION</div><div class="pno">04</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">02 — 새로운 핵심 방향</div>
+    <h2 class="h1" style="margin-top:8px;">라운지 · 클럽 협업형 <span class="r">“브랜드 나이트”</span></h2>
+    <p class="lead">단순 판매형 팝업이 아니라, 마왕족발만의 세계관·분위기를 ‘하루에 폭발적으로’ 경험시키는 브랜드 나이트.
+       <b style="color:var(--bone)">왜 라운지/클럽 콜라보인가?</b></p>
+    <div class="grid cols-3" style="margin-top:16px;">
+      <div class="card"><div class="ct"><span class="dot"></span>인프라 활용</div><ul><li>기존 <b>집기·인프라</b> 그대로 활용</li><li>서빙 인력·운영 시스템 연계</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>주류 경험</div><ul><li><b>바텐더 운영</b> 및 주류 경험 설계 용이</li><li>DJ 장비·공연 시스템 이미 구축</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>분위기 · 집중</div><ul><li>조명·동선·사운드 <b>공간의 분위기</b> 활용</li><li>브랜드는 <b>콘텐츠·경험 설계</b>에 집중</li></ul></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">04</span></div>
+</section>
+
+<!-- ============ 05 운영 전략 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">STRATEGY</div><div class="pno">05</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">03 — 운영 전략</div>
+    <div class="quote" style="margin-top:10px;">“모든 화제성을 <span class="r">하루에 집중</span>한다.”</div>
+    <p class="lead">기간을 길게 가져가기보다 <b style="color:var(--bone)">토요일 단 하루</b>에 콘텐츠·참여·확산을 집중해
+       강한 인상과 바이럴을 만듭니다.</p>
+    <div class="grid cols-3" style="margin-top:18px;">
+      <div class="card red"><div class="ct"><span class="dot"></span>운영일</div><ul><li><b>SATURDAY ONLY</b><br>토요일 단 하루</li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>장소</div><ul><li>라운지 바 또는<br><b>클럽 협업 공간</b></li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>핵심 KPI</div><ul><li>매출이 아니라<br><b>콘텐츠 생성량 + 확산력</b></li></ul></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">05</span></div>
+</section>
+
+<!-- ============ 06 타임테이블 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">TIMETABLE</div><div class="pno">06</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">04 — 행사 운영안 (타임테이블)</div>
+    <h2 class="h1" style="margin-top:6px;font-size:32px;">하루, <span class="r">세 개의 장면</span>으로 설계</h2>
+    <div class="tl">
+      <div class="slot"><div class="top"><div class="time">18:00–19:00</div><div class="name">VIP EXPERIENCE</div></div>
+        <div class="ph"><ul class="x"><li style="font-size:10.5px;line-height:1.6;color:var(--ash);padding-left:13px;position:relative;">초청 30명 내외</li></ul>
+        <ul><li>신메뉴 선체험 · 콜라보 주류 시음</li><li>스타일링 테이블 · 숏폼 포토타임</li><li>굿즈 증정 / VIP 전용 선물</li></ul></div></div>
+      <div class="slot"><div class="top"><div class="time">19:00–20:00</div><div class="name">OPEN TASTING</div></div>
+        <div class="ph"><ul><li>인스타 광고 · 현장 입장</li><li>신메뉴 체험 · 콜라보 주류 시음</li><li>굿즈 증정: DIY 키캡 키링</li><li><b>VIP 기대감을 일반 경험으로 확장</b></li></ul></div></div>
+      <div class="slot"><div class="top"><div class="time">21:00–01:00</div><div class="name">MAWANG NIGHT PARTY</div></div>
+        <div class="ph"><ul><li>DJ 공연 · 래퍼 게스트(가능 시)</li><li>전문 바텐더 · 사케 믹스밤 쇼잉</li><li>자유 파티 / 네트워킹</li></ul></div></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">06</span></div>
+</section>
+
+<!-- ============ 07 VIP DETAIL ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">18:00 — VIP</div><div class="pno">07</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">04-1 — VIP EXPERIENCE</div>
+    <h2 class="h1" style="margin-top:6px;font-size:30px;">초청 30명, <span class="r">기대감의 진원지</span></h2>
+    <div class="grid cols-3" style="margin-top:14px;">
+      <div class="card"><div class="ct"><span class="dot"></span>대상</div><ul>
+        <li>마왕족발 먹방 <b>인플루언서</b></li><li>점주 추천 <b>‘찐팬’ 고객</b></li><li>브랜드 관계자</li><li>인스타 광고 신청자 중 선정</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>프로그램</div><ul>
+        <li>신메뉴 선체험</li><li>마왕 콜라보 주류 시음</li><li>스타일링된 테이블 연출</li><li>자유 숏폼 촬영 / 포토타임</li><li>브랜드 소개(짧고 강하게)</li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>기프트</div><ul>
+        <li>굿즈 증정 / VIP 전용 선물</li><li>굿즈: <b>DIY 키캡 키링</b> (수량 1,000)</li><li>찐팬 대상 추가 기프트</li></ul></div>
+    </div>
+    <p class="lead" style="margin-top:14px;"><b style="color:var(--blood-soft)">※</b> 현장 전체 전문 촬영 → 추후 콘텐츠 아카이빙</p>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">07</span></div>
+</section>
+
+<!-- ============ 08 PARTY DETAIL ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">21:00 — PARTY</div><div class="pno">08</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">04-2 — OPEN TASTING & NIGHT PARTY</div>
+    <h2 class="h1" style="margin-top:6px;font-size:30px;">밤의 본편, <span class="r">바이럴이 터지는 시간</span></h2>
+    <div class="grid cols-2" style="margin-top:14px;">
+      <div class="card"><div class="ct"><span class="dot"></span>MAWANG NIGHT PARTY — 프로그램</div><ul>
+        <li>DJ 공연</li><li>래퍼 게스트 공연 (가능 시)</li><li>전문 바텐더 운영</li><li>마왕 사케 <b>믹스밤 쇼잉</b></li><li>자유 파티 / 네트워킹</li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>혜택 (바이럴 트리거)</div><ul>
+        <li>입장객 전원 <b>프리 드링크 1잔</b></li><li>콜라보 주류 증정 이벤트</li><li>마왕족발 <b>상품권 추첨</b> 이벤트</li></ul>
+        <span class="bignum">!</span></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">08</span></div>
+</section>
+
+<!-- ============ 09 콘텐츠 전략 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">CONTENT</div><div class="pno">09</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">05 — 콘텐츠 전략</div>
+    <h2 class="h1" style="margin-top:6px;font-size:30px;">본질은 <span class="r">‘콘텐츠 생산’</span>이다</h2>
+    <p class="lead">미션형 인스타 이벤트는 최소화하고, 공간·분위기·장면 자체가 콘텐츠가 되도록 설계합니다.</p>
+    <div class="grid cols-3" style="margin-top:14px;">
+      <div class="card"><div class="ct"><span class="dot"></span>콘텐츠 우선 실행</div><ul>
+        <li>먹방 인플루언서 <b>사전 섭외</b></li><li>숏폼 제작 가이드(필수 컷)</li><li>전문 촬영팀 운영</li><li>행사 전체 기록·아카이빙</li><li>종료 후 바이럴 광고 집행</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>행사 이후 — 자산화</div><ul>
+        <li>릴스 광고 집행</li><li>브랜드 SNS 업로드</li><li>점주 대상 홍보 자료</li><li>신메뉴 론칭 콘텐츠</li><li>차기 팝업 티저·레퍼런스</li></ul></div>
+      <div class="card red"><div class="ct"><span class="dot"></span>기대 효과</div><ul>
+        <li>브랜드 이미지 리프레시</li><li>MZ세대 접점 확대</li><li>찐팬 로열티 강화</li><li>신메뉴·협업 주류 테스트</li><li>고품질 UGC·아카이브 구축</li></ul></div>
+    </div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">09</span></div>
+</section>
+
+<!-- ============ 10 공간 비교 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">VENUE</div><div class="pno">10</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">06 — 공간(장소) 후보 비교</div>
+    <h2 class="h1" style="margin-top:6px;font-size:28px;">대여 검토 공간 <span class="r">2곳</span></h2>
+    <table class="cmp">
+      <thead><tr><th style="width:130px;background:transparent;"></th><th>① 어덜트 온리 (ADULT ONLY)</th><th>② 로우키 (LOWKEY)</th></tr></thead>
+      <tbody>
+        <tr><th>위치</th><td><b>가로수길</b></td><td><b>압구정로데오</b></td></tr>
+        <tr><th>특징</th><td>레드 컬러·고급스러움, 이미 인테리어가 <b>마왕과 어울리는 편</b></td><td>공간이 넓어 내부를 <b>마왕 스타일로 꾸미기 수월</b></td></tr>
+        <tr><th>대관 / 비용</th><td class="wait">비용 미정</td><td>단순 대관 <b>시간당 30만원</b> · 팝업+파티 시 예산 맞춰 조정 가능</td></tr>
+        <tr><th>주말 대관</th><td>가격·주말 영업 <b class="wait">소통 필요</b></td><td><b class="ok">까다롭지 않음</b></td></tr>
+        <tr><th>브랜드 콜라보</th><td class="wait">미정</td><td><b class="ok">가능</b></td></tr>
+        <tr><th>주방 조리</th><td>—</td><td class="wait">답변 대기</td></tr>
+        <tr><th>인스타</th><td>@adultonlybar</td><td>@lowkeyseoul</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">10</span></div>
+</section>
+
+<!-- ============ 11 굿즈 + 클로징 ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <svg class="cover-emblem ghost" style="opacity:.9;"><use href="#mask"/></svg>
+  <div class="hd">
+    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
+      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>MAWANG NIGHT</small></div></div>
+    <div class="kicker">GOODS & CLOSING</div><div class="pno">11</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">07 — 굿즈 & 클로징</div>
+    <div class="grid cols-2" style="margin-top:10px;align-items:start;">
+      <div class="card red"><div class="ct"><span class="dot"></span>굿즈 — DIY 키캡 키링</div><ul>
+        <li>MZ 사이에서 유행하는 <b>DIY 키캡 키링</b></li><li>수량: <b>1,000개</b> (주문 제작)</li>
+        <li>VIP · 일반 세션 공통 증정으로 <b>참여·확산 트리거</b></li></ul><span class="bignum">★</span></div>
+      <div class="card"><div class="ct"><span class="dot"></span>전반적 무드</div><ul>
+        <li><b>블랙 · 레드 · 호러(좀비)</b></li><li>마왕족발 세계관과 일관된 비주얼 톤</li><li>브랜드 레드 <b>#C4141B</b></li></ul></div>
+    </div>
+    <div class="quote" style="margin-top:26px;">“팝업이 아니라, <span class="r">마왕족발의 팬덤을 콘텐츠로 전환</span>하는<br>브랜드 미디어 프로젝트.”</div>
+  </div>
+  <div class="ft"><span>MAWANG NIGHT · 마왕족발 브랜드 이슈메이킹 프로젝트</span><span class="r">END</span></div>
+</section>
+
+</body>
+</html>
