@@ -134,6 +134,10 @@ html,body{background:#3a3a3c;color:var(--bone);
 .phslot span{font-size:8.5px;color:var(--ash-d);}
 .phimg{border-radius:10px;overflow:hidden;border:1px solid var(--line-soft);background:#000;}
 .phimg img{width:100%;height:100%;object-fit:cover;display:block;}
+.charwrap{border-radius:10px;overflow:hidden;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 42%,#f4f0e8 0%,#cfc8ba 34%,#3a2528 62%,#150b0c 88%);}
+.charwrap img{height:88%;width:auto;display:block;}
+.cover-logo{position:absolute;right:15mm;top:13mm;width:172px;height:auto;}
 
 /* cover */
 .cover{justify-content:center;align-items:flex-start;}
@@ -177,7 +181,7 @@ html,body{background:#3a3a3c;color:var(--bone);
 <section class="page cover">
   <div class="edge"></div>
   <svg class="cover-emblem ghost"><use href="#mask"/></svg>
-  <div class="logo-ph">마왕족발 로고<br>삽입 영역</div>
+  <img class="cover-logo" src="assets/logo_white.png" alt="마왕족발">​
   <div class="body" style="padding-left:6mm;justify-content:center;">
     <div class="g0">BRAND EXPERIENCE PROJECT</div>
     <h1 class="title" style="margin-top:10px;">RED <span class="r">HOUR</span></h1>
@@ -351,7 +355,7 @@ html,body{background:#3a3a3c;color:var(--bone);
       <div class="card red"><div class="ct"><span class="dot"></span>경험 효과</div><ul>
         <li>입장 순간부터 <b>세계관 몰입</b></li><li>스태프와의 <b>포토·인증 콘텐츠</b> 유발</li></ul></div>
     </div>
-    <div class="phslot" style="margin-top:12px;"><svg class="pi"><use href="#img"/></svg><b>스태프 분장·스타일링 레퍼런스</b><span>캐릭터 무드보드 이미지 삽입 영역</span></div>
+    <div class="charwrap" style="margin-top:12px;height:175px;"><img src="assets/character.png" alt="마왕족발 캐릭터 BI"></div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">07</span></div>
 </section>
@@ -501,8 +505,11 @@ html,body{background:#3a3a3c;color:var(--bone);
       <div class="card"><div class="ct"><span class="dot"></span>기타 굿즈</div><ul>
         <li><b>스티커팩</b> — 마왕 캐릭터·세계관</li>
         <li><b>거울</b> 등 데일리 소품</li>
-        <li>블랙·레드 무드로 <b>비주얼 톤 통일</b></li></ul>
-        <div class="phslot" style="margin-top:10px;min-height:74px;"><span>굿즈 시안 이미지 삽입 영역</span></div></div>
+        <li>블랙·레드 무드로 <b>비주얼 톤 통일</b></li></ul></div>
+    </div>
+    <div class="grid cols-2" style="margin-top:10px;">
+      <div class="phimg" style="height:150px;"><img src="assets/goods_led.jpg" alt="LED 키캡 키링"></div>
+      <div class="phimg" style="height:150px;"><img src="assets/goods_box.jpg" alt="키캡 키링 굿즈 구성"></div>
     </div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">13</span></div>
@@ -655,10 +662,10 @@ html,body{background:#3a3a3c;color:var(--bone);
       <div>
         <div class="ct" style="font-weight:800;font-size:12px;color:var(--bone);margin-bottom:7px;display:flex;align-items:center;gap:7px;"><span style="width:7px;height:7px;background:var(--blood);transform:rotate(45deg);display:inline-block;"></span>사장님 소통 요약</div>
         <div class="chat">
-          <div class="bub q"><span class="who">MAWANG</span>주말 단독 대관·브랜드 콜라보 가능할까요? 비용은 어느 정도일까요?</div>
-          <div class="bub a"><span class="who">ADULT ONLY</span>운영은 <b>초대제 중심</b>으로 가요. 단독 대관 시 초대자만 입장하는 방식이 좋습니다.</div>
-          <div class="bub a"><span class="who">ADULT ONLY</span>대관비는 평일 600 / 주말 800(VAT별도)이 기준이고, 규모·시간·협업 범위 따라 <b>조정 가능</b>합니다.</div>
-          <div class="bub a"><span class="who">ADULT ONLY</span>주방·바 활용, 신메뉴 시식·협업 주류도 가능해요. 서버·바텐더는 시간당 16,000원, DJ는 15~20만 선입니다.</div>
+          <div class="bub a"><span class="who">MAWANG</span>주말 단독 대관·브랜드 콜라보 가능할까요? 비용은 어느 정도일까요?</div>
+          <div class="bub q"><span class="who">ADULT ONLY</span>운영은 <b>초대제 중심</b>으로 가요. 단독 대관 시 초대자만 입장하는 방식이 좋습니다.</div>
+          <div class="bub q"><span class="who">ADULT ONLY</span>대관비는 평일 600 / 주말 800(VAT별도)이 기준이고, 규모·시간·협업 범위 따라 <b>조정 가능</b>합니다.</div>
+          <div class="bub q"><span class="who">ADULT ONLY</span>주방·바 활용, 신메뉴 시식·협업 주류도 가능해요. 서버·바텐더는 시간당 16,000원, DJ는 15~20만 선입니다.</div>
         </div>
         <div class="phimg" style="margin-top:10px;height:170px;"><img src="assets/venue_adult_b.jpg" alt="어덜트 온리 공간"></div>
       </div>
@@ -696,10 +703,10 @@ html,body{background:#3a3a3c;color:var(--bone);
       <div>
         <div class="ct" style="font-weight:800;font-size:12px;color:var(--bone);margin-bottom:7px;display:flex;align-items:center;gap:7px;"><span style="width:7px;height:7px;background:var(--blood);transform:rotate(45deg);display:inline-block;"></span>대표(주현성) 소통 요약</div>
         <div class="chat">
-          <div class="bub q"><span class="who">MAWANG</span>주말에 팝업+파티로 대관 가능할까요? 조명·푸드트럭 세팅도 되나요?</div>
-          <div class="bub a"><span class="who">주현성 대표</span>공간 넓어서 마왕 스타일로 꾸미기 좋아요. 조명 밝기·색상 조절 가능하고, 현장 직원·DJ 바로 붙습니다.</div>
-          <div class="bub a"><span class="who">주현성 대표</span>단순 대관은 시간당 30만이고, 팝업+파티면 <b>보장 매출 맞춰 조정</b> 가능해요.</div>
-          <div class="bub a"><span class="who">주현성 대표</span>푸드트럭 자리는 있는데 1층 의류매장 옆이라 협의가 필요하고, 시즌은 <b>장마철만 피하면</b> 무난합니다.</div>
+          <div class="bub a"><span class="who">MAWANG</span>주말에 팝업+파티로 대관 가능할까요? 조명·푸드트럭 세팅도 되나요?</div>
+          <div class="bub q"><span class="who">주현성 대표</span>공간 넓어서 마왕 스타일로 꾸미기 좋아요. 조명 밝기·색상 조절 가능하고, 현장 직원·DJ 바로 붙습니다.</div>
+          <div class="bub q"><span class="who">주현성 대표</span>단순 대관은 시간당 30만이고, 팝업+파티면 <b>보장 매출 맞춰 조정</b> 가능해요.</div>
+          <div class="bub q"><span class="who">주현성 대표</span>푸드트럭 자리는 있는데 1층 의류매장 옆이라 협의가 필요하고, 시즌은 <b>장마철만 피하면</b> 무난합니다.</div>
         </div>
         <div class="phimg" style="margin-top:10px;height:170px;"><img src="assets/venue_lowkey_b.jpg" alt="로우키 공간"></div>
       </div>
