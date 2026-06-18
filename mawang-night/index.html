@@ -132,6 +132,8 @@ html,body{background:#3a3a3c;color:var(--bone);
 .phslot .pi{width:26px;height:26px;color:var(--line);}
 .phslot b{font-weight:700;font-size:10.5px;letter-spacing:1px;color:var(--ash);}
 .phslot span{font-size:8.5px;color:var(--ash-d);}
+.phimg{border-radius:10px;overflow:hidden;border:1px solid var(--line-soft);background:#000;}
+.phimg img{width:100%;height:100%;object-fit:cover;display:block;}
 
 /* cover */
 .cover{justify-content:center;align-items:flex-start;}
@@ -293,8 +295,8 @@ html,body{background:#3a3a3c;color:var(--bone);
         <li>운영 부담을 덜고 <b>콘텐츠·경험 설계</b>에 집중</li><li>검토 공간은 <b>부록 참조</b> (어덜트 온리 / 로우키)</li></ul></div>
     </div>
     <div class="grid cols-2" style="margin-top:12px;">
-      <div class="phslot"><svg class="pi"><use href="#img"/></svg><b>공간 레퍼런스 사진</b><span>라운지·클럽 분위기 이미지 삽입 영역</span></div>
-      <div class="phslot"><svg class="pi"><use href="#img"/></svg><b>레드 연출 무드컷</b><span>조명·세팅 이미지 삽입 영역</span></div>
+      <div class="phimg" style="height:150px;"><img src="assets/venue_lowkey_a.jpg" alt="라운지·클럽 공간 레퍼런스"></div>
+      <div class="phimg" style="height:150px;"><img src="assets/venue_adult_a.jpg" alt="레드 연출 무드컷"></div>
     </div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">05</span></div>
@@ -658,7 +660,7 @@ html,body{background:#3a3a3c;color:var(--bone);
           <div class="bub a"><span class="who">ADULT ONLY</span>대관비는 평일 600 / 주말 800(VAT별도)이 기준이고, 규모·시간·협업 범위 따라 <b>조정 가능</b>합니다.</div>
           <div class="bub a"><span class="who">ADULT ONLY</span>주방·바 활용, 신메뉴 시식·협업 주류도 가능해요. 서버·바텐더는 시간당 16,000원, DJ는 15~20만 선입니다.</div>
         </div>
-        <div class="phslot" style="margin-top:10px;min-height:78px;"><span>어덜트 온리 공간 사진 삽입 영역</span></div>
+        <div class="phimg" style="margin-top:10px;height:170px;"><img src="assets/venue_adult_b.jpg" alt="어덜트 온리 공간"></div>
       </div>
     </div>
   </div>
@@ -699,7 +701,7 @@ html,body{background:#3a3a3c;color:var(--bone);
           <div class="bub a"><span class="who">주현성 대표</span>단순 대관은 시간당 30만이고, 팝업+파티면 <b>보장 매출 맞춰 조정</b> 가능해요.</div>
           <div class="bub a"><span class="who">주현성 대표</span>푸드트럭 자리는 있는데 1층 의류매장 옆이라 협의가 필요하고, 시즌은 <b>장마철만 피하면</b> 무난합니다.</div>
         </div>
-        <div class="phslot" style="margin-top:10px;min-height:78px;"><span>로우키 공간 사진 삽입 영역</span></div>
+        <div class="phimg" style="margin-top:10px;height:170px;"><img src="assets/venue_lowkey_b.jpg" alt="로우키 공간"></div>
       </div>
     </div>
   </div>
@@ -755,15 +757,27 @@ html,body{background:#3a3a3c;color:var(--bone);
   <div class="body">
     <div class="apx">APPENDIX — 굿즈 견적 ② 브랜다즐 (BRANDAZZLE)</div>
     <h2 class="h1" style="margin-top:4px;font-size:24px;">MAWANG KEYCAP KEYRING <span class="r">견적 (비교)</span></h2>
-    <table class="cmp">
-      <thead><tr><th>구성</th><th>품목</th><th class="num">수량</th><th class="num">단가</th><th class="num">금액</th></tr></thead>
+    <table class="cmp" style="font-size:10px;">
+      <thead><tr><th>구분</th><th>품목</th><th class="num">수량</th><th class="num">단가</th><th class="num">공급가액</th></tr></thead>
       <tbody>
-        <tr><td colspan="5" style="text-align:center;color:var(--ash-d);padding:46px 12px;">
-          브랜다즐 견적서(PDF) 수신 시 — 뉴리디파인과 <b style="color:var(--bone)">동일한 표 형식</b>으로 품목·수량·단가·금액을 반영합니다.
-          <br><span style="font-size:9.5px;">문의: cs@brandazzle.kr · brandazzle.kr</span></td></tr>
+        <tr><th rowspan="6" style="color:var(--bone);font-weight:800;vertical-align:middle;">미조립형<br><span style="color:var(--ash);font-weight:400;">보드+키캡</span></th>
+          <td>1구 보드(LED)+개별 PVC케이스</td><td class="num">1,000</td><td class="num">1,700</td><td class="num">1,700,000</td></tr>
+        <tr><td>키캡 (4종×250)/미조립</td><td class="num">1,000</td><td class="num">1,000</td><td class="num">1,000,000</td></tr>
+        <tr><td>2구 보드(LED)+개별 PVC케이스</td><td class="num">1,000</td><td class="num">2,300</td><td class="num">2,300,000</td></tr>
+        <tr><td>키캡 (4종×500)/미조립</td><td class="num">2,000</td><td class="num">900</td><td class="num">1,800,000</td></tr>
+        <tr><td>3구 보드(LED)+개별 PVC케이스</td><td class="num">1,000</td><td class="num">3,000</td><td class="num">3,000,000</td></tr>
+        <tr><td>키캡 (4종×750)/미조립</td><td class="num">3,000</td><td class="num">850</td><td class="num">2,550,000</td></tr>
+        <tr><th rowspan="3" style="color:var(--bone);font-weight:800;vertical-align:middle;">완성형<br><span style="color:var(--ash);font-weight:400;">키링 LED·OPP</span></th>
+          <td>1구 키캡키링(LED)/OPP · 키캡디자인 (4종×250)</td><td class="num">1,000</td><td class="num">2,400</td><td class="num">2,400,000</td></tr>
+        <tr><td>2구 키캡키링(LED)/OPP · 키캡디자인 (4종×500)</td><td class="num">1,000</td><td class="num">4,000</td><td class="num">4,000,000</td></tr>
+        <tr><td>3구 키캡키링(LED)/OPP · 키캡디자인 (4종×750)</td><td class="num">1,000</td><td class="num">5,500</td><td class="num">5,500,000</td></tr>
       </tbody>
+      <tfoot>
+        <tr><td colspan="2">미조립형 총금액 (VAT 포함)</td><td colspan="3" class="num">1구 2,970,000 · 2구 4,510,000 · 3구 6,105,000</td></tr>
+        <tr><td colspan="2">완성형 총금액 (VAT 포함)</td><td colspan="3" class="num">1구 2,640,000 · 2구 4,400,000 · 3구 6,050,000</td></tr>
+      </tfoot>
     </table>
-    <p class="lead" style="margin-top:10px;"><b style="color:var(--blood-soft)">※</b> 브랜다즐 견적서 재첨부 시 본 슬라이드에 정식 수치 반영 예정. 두 업체 견적을 나란히 비교해 발주처를 결정.</p>
+    <p class="lead" style="margin-top:8px;font-size:10px;"><b style="color:var(--blood-soft)">비고</b> · 공급가액은 VAT별도(합계는 VAT포함) · OPP+made in china 부착 · 견적 영업일 기준 2주 유효 · 결제 발주 후 100%(협의가능) · 발주·디자인파일 영업일 기준 4~5주 소요 · 공급: 주식회사 에이블러 (brandazzle_cs@brandazzle.kr)</p>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">A5</span></div>
 </section>

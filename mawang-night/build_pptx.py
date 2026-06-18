@@ -16,6 +16,8 @@ from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.oxml.ns import qn
+from PIL import Image as PILImage
+import os, tempfile
 
 # ---- palette ----
 INK      = RGBColor(0x0A, 0x0A, 0x0B)
@@ -63,6 +65,22 @@ def dashed(slide, x, y, w, h):
     ln = sp.line._get_or_add_ln()
     d = ln.makeelement(qn('a:prstDash'), {'val': 'dash'}); ln.append(d)
     return sp
+
+ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+_TMPD = tempfile.mkdtemp()
+def place_image(slide, x, y, w, h, fname):
+    """center-crop image to the box aspect ratio and insert at exact size."""
+    im = PILImage.open(os.path.join(ASSETS, fname)).convert("RGB")
+    tgt = (w / h); iw, ih = im.size; cur = iw / ih
+    if cur > tgt:
+        nw = int(ih * tgt); l = (iw - nw) // 2; im = im.crop((l, 0, l + nw, ih))
+    else:
+        nh = int(iw / tgt); t = (ih - nh) // 2; im = im.crop((0, t, iw, t + nh))
+    out = os.path.join(_TMPD, fname.replace('/', '_'))
+    im.save(out, quality=88)
+    pic = slide.shapes.add_picture(out, Inches(x), Inches(y), Inches(w), Inches(h))
+    pic.line.color.rgb = LINE; pic.line.width = Pt(0.75)
+    return pic
 
 def _set_run(r, text, size, color, bold=False, italic=False, spacing=None):
     r.text = text
@@ -307,10 +325,8 @@ def p05():
         ("분위기 자산", ["조명·사운드·동선 등 공간의 무드 활용", "레드 연출로 마왕 세계관과 합치"]),
         ("브랜드는 경험에 집중", ["운영 부담 덜고 콘텐츠·경험 설계 집중", "검토 공간은 부록 참조 (어덜트온리/로우키)"], True),
     ], 3.0, 1.9)
-    dashed(s, ML, 5.15, CW/2-0.1, 1.2)
-    ph_label(s, ML, 5.15, CW/2-0.1, 1.2, "공간 레퍼런스 사진 · 삽입 영역")
-    dashed(s, ML+CW/2+0.1, 5.15, CW/2-0.1, 1.2)
-    ph_label(s, ML+CW/2+0.1, 5.15, CW/2-0.1, 1.2, "레드 연출 무드컷 · 삽입 영역")
+    place_image(s, ML, 5.05, CW/2-0.1, 1.35, "venue_lowkey_a.jpg")
+    place_image(s, ML+CW/2+0.1, 5.05, CW/2-0.1, 1.35, "venue_adult_a.jpg")
     footer(s, "05")
 
 def ph_label(s, x, y, w, h, text):
@@ -546,7 +562,7 @@ def a1():
     footer(s, "A1")
 
 # ---- venue detail (A2/A3) ----
-def venue_detail(pno, kicker, head_parts, ig, blocks, chat_title, chats, ph_text):
+def venue_detail(pno, kicker, head_parts, ig, blocks, chat_title, chats, ph_text, ph_image=None):
     s = new_slide(); header(s, kicker, pno)
     secno(s, "APPENDIX — 공간 " + ("①" if pno=="A2" else "②"))
     title(s, head_parts, size=22)
@@ -575,9 +591,12 @@ def venue_detail(pno, kicker, head_parts, ig, blocks, chat_title, chats, ph_text
         pb = para(tfb, line=1.25)
         _set_run(pb.add_run(), text, 9.5, BONE if side=="a" else ASH)
         cy += h + 0.1
-    dashed(s, rx, cy+0.02, rw, 6.3-cy)
-    if 6.3-cy > 0.4:
-        ph_label(s, rx, cy+0.02, rw, 6.3-cy, ph_text)
+    ph_h = 6.35 - cy
+    if ph_h > 0.4:
+        if ph_image:
+            place_image(s, rx, cy+0.05, rw, ph_h-0.05, ph_image)
+        else:
+            dashed(s, rx, cy+0.02, rw, ph_h); ph_label(s, rx, cy+0.02, rw, ph_h, ph_text)
     footer(s, pno)
 
 def a2():
@@ -593,7 +612,7 @@ def a2():
          ("ADULT ONLY","a","운영은 초대제 중심. 단독 대관 시 초대자만 입장하는 방식이 좋아요."),
          ("ADULT ONLY","a","평일 600 / 주말 800(VAT별도) 기준, 범위 따라 조정 가능합니다."),
          ("ADULT ONLY","a","주방·바 활용, 협업 주류 OK. 서버·바텐더 시간당 16,000원, DJ 15~20만.")],
-        "어덜트 온리 공간 사진")
+        "어덜트 온리 공간 사진", ph_image="venue_adult_b.jpg")
 
 def a3():
     venue_detail("A3", "APPENDIX · ② LOWKEY",
@@ -608,7 +627,7 @@ def a3():
          ("주현성 대표","a","넓어서 마왕 스타일로 꾸미기 좋아요. 조명 조절 가능, 직원·DJ 바로 붙습니다."),
          ("주현성 대표","a","단순 대관 시간당 30만, 팝업+파티면 보장 매출 맞춰 조정 가능."),
          ("주현성 대표","a","푸드트럭은 1층 매장 옆이라 협의 필요, 시즌은 장마철만 피하면 무난.")],
-        "로우키 공간 사진")
+        "로우키 공간 사진", ph_image="venue_lowkey_b.jpg")
 
 # ---- A4 quote 뉴리디파인 ----
 def a4():
@@ -653,13 +672,41 @@ def a5():
     s = new_slide(); header(s, "APPENDIX · QUOTE ②", "A5")
     secno(s, "APPENDIX — 굿즈 견적 ② 브랜다즐 (BRANDAZZLE)")
     title(s, [("MAWANG KEYCAP KEYRING ", BONE), ("견적 (비교)", BLOOD)], size=20)
-    rect(s, ML, 2.4, CW, 2.6, PANEL, shape=MSO_SHAPE.ROUNDED_RECTANGLE, line=LINE)
-    tb, tf = textbox(s, ML+0.3, 2.4, CW-0.6, 2.6, anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER)
-    p = para(tf, first=True, align=PP_ALIGN.CENTER, line=1.4)
-    _set_run(p.add_run(), "브랜다즐 견적서(PDF) 수신 시 — 뉴리디파인과 동일한 표 형식으로\n품목·수량·단가·금액을 반영합니다.", 13, ASH)
-    p2 = para(tf, align=PP_ALIGN.CENTER, space_before=8)
-    _set_run(p2.add_run(), "문의: cs@brandazzle.kr · brandazzle.kr", 10, ASHD)
-    lead(s, "※ 브랜다즐 견적서 재첨부 시 본 슬라이드에 정식 수치 반영 예정. 두 업체 견적을 나란히 비교해 발주처를 결정.", 5.3, size=11)
+    head = ["구분","품목","수량","단가","공급가액"]
+    data = [
+        ("미조립형","1구 보드(LED)+개별 PVC케이스","1,000","1,700","1,700,000"),
+        ("","키캡 (4종×250)/미조립","1,000","1,000","1,000,000"),
+        ("","2구 보드(LED)+개별 PVC케이스","1,000","2,300","2,300,000"),
+        ("","키캡 (4종×500)/미조립","2,000","900","1,800,000"),
+        ("","3구 보드(LED)+개별 PVC케이스","1,000","3,000","3,000,000"),
+        ("","키캡 (4종×750)/미조립","3,000","850","2,550,000"),
+        ("완성형","1구 키캡키링(LED)/OPP (4종×250)","1,000","2,400","2,400,000"),
+        ("","2구 키캡키링(LED)/OPP (4종×500)","1,000","4,000","4,000,000"),
+        ("","3구 키캡키링(LED)/OPP (4종×750)","1,000","5,500","5,500,000"),
+    ]
+    foots = [("미조립형 총금액 (VAT 포함)","1구 2,970,000 · 2구 4,510,000 · 3구 6,105,000"),
+             ("완성형 총금액 (VAT 포함)","1구 2,640,000 · 2구 4,400,000 · 3구 6,050,000")]
+    rn = 1 + len(data) + len(foots); cn = 5
+    tbl = s.shapes.add_table(rn, cn, Inches(ML), Inches(2.0), Inches(CW), Inches(3.5)).table
+    widths = [1.3, 4.6, 1.0, 1.0, 2.19]
+    for i,wd in enumerate(widths): tbl.columns[i].width = Inches(wd)
+    aligns = [PP_ALIGN.LEFT,PP_ALIGN.LEFT,PP_ALIGN.RIGHT,PP_ALIGN.RIGHT,PP_ALIGN.RIGHT]
+    for ci in range(cn):
+        style_cell(tbl.cell(0,ci), head[ci], 10.5, WHITE, bold=True, fill=BLOOD, align=aligns[ci])
+    for ri,row in enumerate(data, start=1):
+        for ci,val in enumerate(row):
+            style_cell(tbl.cell(ri,ci), val, 9, BONE if ci==0 else ASH, bold=(ci==0), align=aligns[ci])
+    # group label merges
+    tbl.cell(1,0).merge(tbl.cell(6,0)); style_cell(tbl.cell(1,0), "미조립형\n(보드+키캡)", 9.5, BONE, bold=True, fill=PANEL)
+    tbl.cell(7,0).merge(tbl.cell(9,0)); style_cell(tbl.cell(7,0), "완성형\n(키링 LED·OPP)", 9.5, BONE, bold=True, fill=PANEL)
+    fr = 1+len(data)
+    for k,(lbl,amt) in enumerate(foots):
+        ri = fr+k
+        tbl.cell(ri,0).merge(tbl.cell(ri,1))
+        tbl.cell(ri,2).merge(tbl.cell(ri,4))
+        style_cell(tbl.cell(ri,0), lbl, 10, BONE, bold=True, fill=REDPANEL, align=PP_ALIGN.LEFT)
+        style_cell(tbl.cell(ri,2), amt, 10, BONE, bold=True, fill=REDPANEL, align=PP_ALIGN.RIGHT)
+    lead(s, "비고 · 공급가액 VAT별도(합계 VAT포함) · OPP+made in china 부착 · 견적 영업일 기준 2주 유효 · 결제 발주 후 100%(협의가능) · 발주·디자인파일 영업일 4~5주 · 공급: 주식회사 에이블러(brandazzle_cs@brandazzle.kr)", 5.75, size=9.5)
     footer(s, "A5")
 
 
