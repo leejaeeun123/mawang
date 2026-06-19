@@ -130,7 +130,7 @@ img{display:block;}
 .qt th,.qt td{border-bottom:1px solid var(--line-soft);padding:7px 10px;text-align:left;vertical-align:middle;}
 .qt thead th{background:linear-gradient(120deg,var(--blood),var(--blood-deep));color:#fff;font-weight:900;font-size:11px;}
 .qt td{color:var(--ash);} .qt td b{color:var(--bone);}
-.qt .grp{font-family:'Bebas';letter-spacing:1px;font-size:15px;color:var(--blood-soft);font-weight:700;}
+.qt .grp{font-family:'Pretendard';letter-spacing:0;font-size:12.5px;color:var(--blood-soft);font-weight:800;}
 .qt .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--bone);}
 .qt .sum td{background:rgba(196,20,27,.12);color:#fff;font-weight:900;border-bottom:1px solid var(--line);}
 .qt .sum .num{color:#fff;}
@@ -151,8 +151,8 @@ img{display:block;}
 /* food cards (p12) */
 .food{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
 .foodcard{background:linear-gradient(160deg,var(--panel),var(--ink2));border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;}
-.foodcard .pic{height:175px;background:#000;}
-.foodcard .pic img{width:100%;height:100%;object-fit:cover;}
+.foodcard .pic{height:206px;background:#000;}
+.foodcard .pic img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
 .foodcard .in{padding:13px 16px 15px;}
 .foodcard .ttl{font-family:'Bebas';letter-spacing:1.5px;font-size:21px;color:var(--bone);}
 .foodcard .ko{font-family:'NotoKR';font-weight:900;font-size:13px;color:var(--blood-soft);margin:3px 0 8px;}
@@ -169,16 +169,31 @@ img{display:block;}
 /* cover */
 .cover{justify-content:center;align-items:flex-start;text-align:left;}
 .cover .g0{font-family:'Bebas';letter-spacing:6px;font-size:18px;color:var(--blood);}
-.cover .title{font-family:'Cinzel';font-weight:700;font-size:104px;line-height:.96;color:var(--bone);letter-spacing:2px;text-shadow:0 0 40px rgba(196,20,27,.35);}
+.cover .title{font-family:'Pretendard';font-weight:900;font-size:98px;line-height:.98;color:var(--bone);letter-spacing:-3px;text-shadow:0 0 40px rgba(196,20,27,.35);}
 .cover .title .r{color:var(--blood);}
 .cover .sub{font-family:'BlackHanSans';font-size:25px;color:var(--bone);margin-top:14px;letter-spacing:-.5px;}
 .cover .sub small{font-family:'NotoKR';font-size:14px;color:var(--ash-d);font-weight:400;}
 .cover .meta{margin-top:24px;font-size:12px;letter-spacing:1px;color:var(--ash);}
 /* 공식 로고 (흰색) / CI 캐릭터 */
-.logo-img{height:23px;width:auto;filter:brightness(0) invert(1);display:block;}
-.cover-logo{position:absolute;right:15mm;top:13mm;height:15px;width:auto;filter:brightness(0) invert(1);}
+.logo-img{height:28px;width:auto;filter:brightness(0) invert(1);display:block;}
+.cover-logo{position:absolute;right:15mm;top:13mm;height:18px;width:auto;filter:brightness(0) invert(1);}
 .cover-emblem{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:300px;height:auto;opacity:.5;}
 .cover-emblem.ghost{width:340px;right:8px;opacity:.13;}
+
+/* p7 캡션 행 (이미지 위 한 줄) */
+.caprow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px;margin-bottom:9px;}
+.caprow .cap{font-family:'Pretendard';font-weight:700;font-size:11.5px;color:var(--bone);text-align:center;letter-spacing:.2px;}
+.caprow .cap::before{content:"◆";color:var(--blood);font-size:9px;margin-right:5px;vertical-align:middle;}
+
+/* p13 키캡 예시 썸네일 */
+.keycap-ex{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;max-width:330px;}
+.keycap-ex .fig{height:80px;}
+
+/* 감사 페이지 */
+.thanks{justify-content:center;align-items:center;text-align:center;}
+.thanks .ko{font-family:'Pretendard';font-weight:900;font-size:62px;color:var(--bone);letter-spacing:-2px;}
+.thanks .en{font-family:'Bebas';letter-spacing:6px;font-size:20px;color:var(--blood-soft);margin-top:14px;}
+.thanks .line{width:64px;height:3px;background:var(--blood);margin:22px auto 0;}
 </style>
 </head>
 <body>
@@ -291,18 +306,16 @@ img{display:block;}
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">SPACE</div><div class="pno">05</div>
   </div>
-  <div class="body" style="flex-direction:row;gap:18px;align-items:stretch;">
-    <div class="fig" style="width:38%;flex:none;"><img src="assets/img/p5-space.jpg" alt="공간 레퍼런스"></div>
-    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <div class="sec-no">04 — 공간 방향성</div>
-      <h2 class="h1" style="margin-top:8px;font-size:30px;">라운지·클럽 <span class="r">협업형 공간</span></h2>
-      <p class="lead">자체 공간을 새로 세팅하는 대신, 이미 갖춰진 라운지·클럽과 협업해<br>브랜드는 <b>운영보다 경험 설계에 집중</b>합니다.</p>
-      <div class="grid cols-3" style="margin-top:14px;">
-        <div class="card"><div class="ct"><span class="dot"></span>인프라 활용</div><ul><li>집기·서빙 인력·운영 시스템 그대로 연계</li><li>바텐더·DJ·음향 장비 구축</li></ul></div>
-        <div class="card"><div class="ct"><span class="dot"></span>분위기 자산</div><ul><li>조명·사운드·동선 등 공간의 무드 활용</li><li>레드 연출로 마왕 세계관과 합치</li></ul></div>
-        <div class="card"><div class="ct"><span class="dot"></span>브랜드는 경험에 집중</div><ul><li>운영 부담을 덜고 콘텐츠·경험 설계에 집중</li><li>검토 공간은 부록 참조 (어덜트 온리 / 로우키)</li></ul></div>
-      </div>
+  <div class="body">
+    <div class="sec-no">04 — 공간 방향성</div>
+    <h2 class="h1" style="margin-top:8px;font-size:30px;">라운지·클럽 <span class="r">협업형 공간</span></h2>
+    <p class="lead">자체 공간을 새로 세팅하는 대신, 이미 갖춰진 라운지·클럽과 협업해<br>브랜드는 <b>운영보다 경험 설계에 집중</b>합니다.</p>
+    <div class="grid cols-3" style="margin-top:14px;">
+      <div class="card"><div class="ct"><span class="dot"></span>인프라 활용</div><ul><li>집기·서빙 인력·운영 시스템 그대로 연계</li><li>바텐더·DJ·음향 장비 구축</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>분위기 자산</div><ul><li>조명·사운드·동선 등 공간의 무드 활용</li><li>레드 연출로 마왕 세계관과 합치</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>브랜드는 경험에 집중</div><ul><li>운영 부담을 덜고 콘텐츠·경험 설계에 집중</li><li>검토 공간은 부록 참조 (어덜트 온리 / 로우키)</li></ul></div>
     </div>
+    <div class="fig" style="height:150px;margin-top:15px;"><img src="assets/img/p5-space.jpg" alt="공간 레퍼런스" style="width:100%;height:100%;object-fit:cover;object-position:center 42%;"></div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">05</span></div>
 </section>
@@ -325,9 +338,9 @@ img{display:block;}
     </div>
     <div class="sec-no" style="margin-top:14px;font-size:12px;">현장 연출</div>
     <div class="imgrow cols-4" style="grid-template-columns:repeat(4,1fr);margin-top:8px;">
-      <div><div class="fig" style="height:118px;"><img src="assets/img/p6-light.jpg" alt="붉은 조명"></div><div class="figcap">붉은 조명</div></div>
+      <div><div class="fig" style="height:118px;"><img src="assets/img/p6-light.jpg" alt="붉은 조명" style="object-position:center 30%;"></div><div class="figcap">붉은 조명</div></div>
       <div><div class="fig" style="height:118px;"><img src="assets/img/p6-fog.jpg" alt="안개 효과"></div><div class="figcap">안개 효과</div></div>
-      <div><div class="fig" style="height:118px;"><img src="assets/img/p6-tableware.jpg" alt="블랙 테이블웨어"></div><div class="figcap">블랙 테이블웨어</div></div>
+      <div><div class="fig" style="height:118px;"><img src="assets/img/p6-tableware.jpg" alt="블랙 테이블웨어" style="object-position:center 64%;"></div><div class="figcap">블랙 테이블웨어</div></div>
       <div><div class="fig" style="height:118px;"><img src="assets/img/p6-mirror.jpg" alt="미러 포토존"></div><div class="figcap">미러 포토존</div></div>
     </div>
   </div>
@@ -345,12 +358,15 @@ img{display:block;}
     <div class="sec-no">06 — 스태프 컨셉</div>
     <h2 class="h1" style="margin-top:6px;font-size:28px;">스태프가 곧 <span class="r">마왕 세계관</span></h2>
     <p class="lead">현장 스태프를 단순 운영 인력이 아니라 <b>마왕의 밤을 완성하는</b> 캐릭터로 연출합니다.<br>살아 움직이는 캐릭터는 그 자체로 강력한 브랜드 경험이자 콘텐츠가 됩니다.</p>
-    <div class="imgrow" style="grid-template-columns:repeat(5,1fr);margin-top:14px;">
-      <div><div class="fig" style="height:230px;"><img src="assets/img/p7-1.jpg" alt="마왕 컨셉"></div><div class="figcap">마왕 컨셉</div></div>
-      <div><div class="fig" style="height:230px;"><img src="assets/img/p7-2.jpg" alt="귀신 컨셉"></div><div class="figcap">귀신 컨셉</div></div>
-      <div><div class="fig" style="height:230px;"><img src="assets/img/p7-3.jpg" alt="악마 뿔 포인트"></div><div class="figcap">악마 뿔 포인트</div></div>
-      <div><div class="fig" style="height:230px;"><img src="assets/img/p7-4.jpg" alt="블랙 셔츠"></div><div class="figcap">블랙 셔츠</div></div>
-      <div><div class="fig" style="height:230px;"><img src="assets/img/p7-5.jpg" alt="레드 액세서리"></div><div class="figcap">레드 액세서리</div></div>
+    <div class="caprow">
+      <div class="cap">마왕 컨셉</div><div class="cap">귀신 컨셉</div><div class="cap">악마 뿔 포인트</div><div class="cap">블랙 셔츠</div><div class="cap">레드 액세서리</div>
+    </div>
+    <div class="imgrow" style="grid-template-columns:repeat(5,1fr);margin-top:0;">
+      <div class="fig" style="height:236px;"><img src="assets/img/p7-1.jpg" alt="마왕 컨셉"></div>
+      <div class="fig" style="height:236px;"><img src="assets/img/p7-2.jpg" alt="귀신 컨셉"></div>
+      <div class="fig" style="height:236px;"><img src="assets/img/p7-3.jpg" alt="악마 뿔 포인트"></div>
+      <div class="fig" style="height:236px;"><img src="assets/img/p7-4.jpg" alt="블랙 셔츠"></div>
+      <div class="fig" style="height:236px;"><img src="assets/img/p7-5.jpg" alt="레드 액세서리"></div>
     </div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">07</span></div>
@@ -419,7 +435,7 @@ img{display:block;}
       <div class="card"><div class="ct"><span class="dot"></span>프로그램</div><ul>
         <li>마왕족발 경험 제공 (시식)</li><li>프리 드링크 1잔 제공</li><li>굿즈 증정 (마왕 키캡)</li><li>감사 선물 제공 <b>(마왕족발 5만원권)</b></li></ul></div>
     </div>
-    <p class="lead" style="margin-top:14px;border-top:1px solid var(--line-soft);padding-top:10px;"><b style="color:var(--blood-soft)">※</b> VIP 콘텐츠를 일반 고객 경험으로 확장.</p>
+    <p class="lead" style="margin-top:16px;"><b style="color:var(--blood-soft)">※</b> VIP 콘텐츠를 일반 고객 경험으로 확장.</p>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">10</span></div>
 </section>
@@ -496,6 +512,12 @@ img{display:block;}
         <li><b>스티커팩</b> — 마왕 캐릭터·세계관</li><li><b>거울</b> 등 데일리 소품</li><li>블랙·레드 무드로 비주얼 톤 통일</li></ul>
         <div class="note" style="margin-top:8px;font-size:10px;color:var(--ash-d);">키캡 키링이 메인 포인트, 기타 굿즈는 보조 구성</div></div>
     </div>
+    <div class="sec-no" style="margin-top:14px;font-size:11px;">키캡 키링 예시</div>
+    <div class="keycap-ex">
+      <div class="fig"><img src="assets/img/keycap/keycap-1.jpg" alt="키캡 키링 예시"></div>
+      <div class="fig"><img src="assets/img/keycap/keycap-2.jpg" alt="키캡 키링 예시"></div>
+      <div class="fig"><img src="assets/img/keycap/keycap-3.jpg" alt="키캡 키링 예시"></div>
+    </div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">13</span></div>
 </section>
@@ -513,13 +535,13 @@ img{display:block;}
     <p class="lead">복잡한 SNS 미션은 참여 피로도를 높입니다.<br>대신, <b>사람들이 스스로 찍고 싶어지는 순간을 만듭니다.</b></p>
     <div class="grid cols-3" style="margin-top:14px;">
       <div class="card"><div class="ct"><span class="dot"></span>사전</div><ul>
-        <li>마왕 SNS 광고 집행, 인플루언서 계정 광고를 통해 행사 당일 파티 초대 및 바이럴 필요</li><li>현장 방문할 먹방·숏폼 인플루언서 사전 섭외</li><li>젠지·패션 인플루언서 방문 섭외</li></ul></div>
+        <li>마왕 SNS 광고 집행, 인플루언서 계정 광고를 통해<br>행사 당일 파티 초대 및 바이럴 필요</li><li>현장 방문할 먹방·숏폼 인플루언서 사전 섭외</li><li>젠지·패션 인플루언서 방문 섭외</li></ul></div>
       <div class="card"><div class="ct"><span class="dot"></span>현장</div><ul>
-        <li>래퍼 및 DJ 공연 필수</li><li>콘텐츠 제작 가이드 제공</li><li>전문 촬영팀 운영, 현장 분위기 중심 촬영 (행사 전체 기록 및 아카이빙)</li></ul></div>
+        <li>래퍼 및 DJ 공연 필수</li><li>콘텐츠 제작 가이드 제공</li><li>전문 촬영팀 운영, 현장 분위기 중심 촬영<br>(행사 전체 기록 및 아카이빙)</li></ul></div>
       <div class="card"><div class="ct"><span class="dot"></span>사후</div><ul>
         <li>행사 종료 후 바이럴 광고 집행</li><li>릴스·숏폼 재편집 배포</li><li>고품질 UGC·아카이브 축적</li></ul></div>
     </div>
-    <p class="lead" style="margin-top:12px;border-top:1px solid var(--line-soft);padding-top:9px;max-width:none;"><b style="color:var(--blood-soft);">|</b> 콘텐츠 양성에 가장 비용을 많이 들여야 하며, 힙하고 즐거웠던 파티로 기억에 남고, 기록도 남도록 기획하는 것이 관건.</p>
+    <p class="lead" style="margin-top:14px;max-width:none;"><b style="color:var(--blood-soft);">|</b> 콘텐츠 양성에 가장 비용을 많이 들여야 하며, 힙하고 즐거웠던 파티로 기억에 남고, 기록도 남도록 기획하는 것이 관건.</p>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">14</span></div>
 </section>
@@ -625,8 +647,8 @@ img{display:block;}
       <div class="card"><div class="ct"><span class="dot"></span>비용 / 인력 (참고용)</div><ul>
         <li>대관: 평일 600만 / 주말 800만 (VAT별도)</li><li>서버·바텐더 시간당 16,000원</li><li>DJ 150,000~200,000원</li></ul></div>
     </div>
-    <div style="flex:1;">
-      <div class="gallery" style="grid-template-columns:repeat(3,1fr);grid-auto-rows:96px;">
+    <div style="flex:1;display:flex;">
+      <div class="gallery" style="grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;width:100%;height:100%;margin-top:0;">
         <div class="fig"><img src="assets/img/venue/adult-1.jpg" alt=""></div>
         <div class="fig"><img src="assets/img/venue/adult-2.jpg" alt=""></div>
         <div class="fig"><img src="assets/img/venue/adult-3.jpg" alt=""></div>
@@ -656,8 +678,8 @@ img{display:block;}
       <div class="card"><div class="ct"><span class="dot"></span>비용 / 조건 (참고용)</div><ul>
         <li>단순 대관 시간당 30만</li><li>팝업+파티 시 보장 매출에 따라 조정</li><li>성수기 지금~가을 (장마철만 회피)</li></ul></div>
     </div>
-    <div style="flex:1;">
-      <div class="gallery" style="grid-template-columns:repeat(3,1fr);grid-auto-rows:96px;">
+    <div style="flex:1;display:flex;">
+      <div class="gallery" style="grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;width:100%;height:100%;margin-top:0;">
         <div class="fig"><img src="assets/img/venue/lowkey-2.jpg" alt=""></div>
         <div class="fig"><img src="assets/img/venue/lowkey-3.jpg" alt=""></div>
         <div class="fig"><img src="assets/img/venue/lowkey-4.jpg" alt=""></div>
@@ -699,13 +721,13 @@ img{display:block;}
         <tr class="sum"><td colspan="4">구성 3구 합계 (VAT 포함)</td><td class="num">6,800,000</td></tr>
       </tbody>
     </table>
-    <p class="remark">비고 · 풀컬러 키캡 디자인 5종까지 할인 · 대량 제작 보통 2~3주(매우 많으면 소폭 증가)<br>· 개별 조립·포장 제외 시 해당 금액만 차감.</p>
+    <p class="remark">비고 · 풀컬러 키캡 디자인 5종까지 할인 · 대량 제작 보통 <b class="w">2~3주</b>(매우 많으면 소폭 증가)<br>· 개별 조립·포장 제외 시 해당 금액만 차감.</p>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">A4</span></div>
 </section>
 
 <!-- ============ 22 APPENDIX · QUOTE ② 브랜다즐 ============ -->
-<section class="page" style="page-break-after:avoid;break-after:avoid;">
+<section class="page">
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
@@ -726,13 +748,26 @@ img{display:block;}
         <tr><td rowspan="3" class="grp">완성형<br><span style="font-size:9px;color:var(--ash-d);">키링 LED·OPP</span></td><td>1구 키캡키링(LED)/OPP · 키캡디자인(4종×250)</td><td>1,000</td><td class="num">2,400</td><td class="num">2,400,000</td></tr>
         <tr><td>2구 키캡키링(LED)/OPP · 키캡디자인(4종×500)</td><td>1,000</td><td class="num">4,000</td><td class="num">4,000,000</td></tr>
         <tr><td>3구 키캡키링(LED)/OPP · 키캡디자인(4종×750)</td><td>1,000</td><td class="num">5,500</td><td class="num">5,500,000</td></tr>
-        <tr class="sum"><td colspan="4">미조립형 총금액 (VAT 포함)</td><td class="num" style="font-size:9.5px;">1구 2,970,000 · 2구 4,510,000 · 3구 6,105,000</td></tr>
-        <tr class="sum"><td colspan="4">완성형 총금액 (VAT 포함)</td><td class="num" style="font-size:9.5px;">1구 2,640,000 · 2구 4,400,000 · 3구 6,050,000</td></tr>
+        <tr class="sum"><td colspan="4">미조립형 총금액 (VAT 포함)</td><td class="num" style="font-size:10px;line-height:1.5;">1구 2,970,000<br>2구 4,510,000<br>3구 6,105,000</td></tr>
+        <tr class="sum"><td colspan="4">완성형 총금액 (VAT 포함)</td><td class="num" style="font-size:10px;line-height:1.5;">1구 2,640,000<br>2구 4,400,000<br>3구 6,050,000</td></tr>
       </tbody>
     </table>
     <p class="remark">비고 · 공급가액은 VAT별도(합계는 VAT포함) · OPP+made in china 부착 · 견적 영업일 기준 2주 유효<br>· 결제 발주 후 100%(협의가능) · 발주·디자인파일 영업일 기준 <b class="w">4~5주</b> 소요 · 공급: 주식회사 에이블러 (brandazzle_cs@brandazzle.kr)</p>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">A5</span></div>
+</section>
+
+<!-- ============ 23 THANK YOU ============ -->
+<section class="page thanks">
+  <div class="edge"></div>
+  <img class="cover-emblem ghost" style="opacity:.12;" src="assets/character-red.png" alt="">
+  <div class="body" style="align-items:center;justify-content:center;text-align:center;padding-left:0;">
+    <div class="en">THANK YOU</div>
+    <div class="ko">감사합니다</div>
+    <div class="line"></div>
+    <div style="margin-top:20px;color:var(--ash-d);font-size:12px;letter-spacing:1px;">RED HOUR · 마왕족발 브랜드 경험 프로젝트 · 전략마케팅팀</div>
+  </div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">END</span></div>
 </section>
 
 </body>
