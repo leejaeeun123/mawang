@@ -4,7 +4,7 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const html = 'file://' + join(__dirname, 'index.html');
-const out = join(__dirname, 'MAWANG_NIGHT_기획보고.pdf');
+const out = join(__dirname, 'RED_HOUR_기획안.pdf');
 
 const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--font-render-hinting=none'] });
 const page = await browser.newPage();
