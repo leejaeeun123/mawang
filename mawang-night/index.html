@@ -6,12 +6,14 @@
 <title>RED HOUR — 마왕족발 브랜드 경험 프로젝트</title>
 <style>
 /* ===== Fonts ===== */
-@font-face{font-family:'BlackHanSans';src:url('fonts/BlackHanSans.woff2') format('woff2');font-weight:400;font-display:swap;}
-@font-face{font-family:'NotoKR';src:url('fonts/NotoSansKR-400.woff2') format('woff2');font-weight:400;font-display:swap;}
-@font-face{font-family:'NotoKR';src:url('fonts/NotoSansKR-700.woff2') format('woff2');font-weight:700;font-display:swap;}
-@font-face{font-family:'NotoKR';src:url('fonts/NotoSansKR-900.woff2') format('woff2');font-weight:900;font-display:swap;}
-@font-face{font-family:'Cinzel';src:url('fonts/Cinzel-700.woff2') format('woff2');font-weight:700;font-display:swap;}
-@font-face{font-family:'Bebas';src:url('fonts/BebasNeue.woff2') format('woff2');font-weight:400;font-display:swap;}
+/* Pretendard 풀 버전 (모든 한글·영문 포함, 가변 100~900) — 본문·로고 */
+@font-face{font-family:'Pretendard';src:url('fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap;}
+@font-face{font-family:'NotoKR';src:url('fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap;}
+/* 헤드라인 = Pretendard Black(900) */
+@font-face{font-family:'BlackHanSans';src:url('fonts/PretendardVariable.woff2') format('woff2');font-weight:900;font-display:swap;}
+/* 영문 디자인 폰트 풀버전 */
+@font-face{font-family:'Cinzel';src:url('fonts/Cinzel-700-Full.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'Bebas';src:url('fonts/BebasNeue-Full.woff2') format('woff2');font-weight:400;font-display:swap;}
 
 /* ===== Tokens ===== */
 :root{
@@ -21,7 +23,7 @@
   --line:rgba(196,20,27,.32); --line-soft:rgba(244,240,232,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{background:#3a3a3c;color:var(--bone);font-family:'NotoKR',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+html,body{background:#3a3a3c;color:var(--bone);font-family:'Pretendard','NotoKR',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 img{display:block;}
 
 /* ===== Page ===== */
@@ -61,7 +63,7 @@ img{display:block;}
 .body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:6mm;}
 
 /* ===== Type ===== */
-.sec-no{font-family:'Bebas';font-size:14px;letter-spacing:4px;color:var(--blood);}
+.sec-no{font-family:'Bebas','Pretendard';font-weight:700;font-size:13px;letter-spacing:2px;color:var(--blood);}
 .h1{font-family:'BlackHanSans';font-size:38px;line-height:1.1;letter-spacing:-.5px;color:var(--bone);}
 .h1 .r{color:var(--blood);}
 .lead{font-size:13px;line-height:1.7;color:var(--ash);max-width:74ch;margin-top:10px;}
@@ -172,11 +174,11 @@ img{display:block;}
 .cover .sub{font-family:'BlackHanSans';font-size:25px;color:var(--bone);margin-top:14px;letter-spacing:-.5px;}
 .cover .sub small{font-family:'NotoKR';font-size:14px;color:var(--ash-d);font-weight:400;}
 .cover .meta{margin-top:24px;font-size:12px;letter-spacing:1px;color:var(--ash);}
-.cover-logo{position:absolute;right:15mm;top:13mm;font-family:'BlackHanSans';font-size:14px;letter-spacing:.5px;color:var(--bone);text-align:right;line-height:1;}
-.cover-logo small{display:block;font-family:'NotoKR';font-weight:700;font-size:6px;letter-spacing:2.5px;color:var(--ash-d);margin-top:3px;}
-.cover-emblem{position:absolute;right:5mm;top:50%;transform:translateY(-50%);width:330px;height:330px;color:rgba(196,20,27,.55);
-  filter:drop-shadow(0 0 50px rgba(196,20,27,.4));}
-.cover-emblem.ghost{color:rgba(196,20,27,.13);width:520px;right:-40px;filter:none;}
+/* 공식 로고 (흰색) / CI 캐릭터 */
+.logo-img{height:23px;width:auto;filter:brightness(0) invert(1);display:block;}
+.cover-logo{position:absolute;right:15mm;top:13mm;height:15px;width:auto;filter:brightness(0) invert(1);}
+.cover-emblem{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:300px;height:auto;opacity:.5;}
+.cover-emblem.ghost{width:340px;right:8px;opacity:.13;}
 </style>
 </head>
 <body>
@@ -197,8 +199,8 @@ img{display:block;}
 <!-- ============ 01 COVER ============ -->
 <section class="page cover">
   <div class="edge"></div>
-  <svg class="cover-emblem ghost"><use href="#mask"/></svg>
-  <div class="cover-logo"><span>마왕족발</span><small>MAWANG JOKBAL</small></div>
+  <img class="cover-emblem ghost" src="assets/character-red.png" alt="">
+  <img class="cover-logo" src="assets/logo.png" alt="마왕족발">
   <div class="body" style="padding-left:6mm;justify-content:center;">
     <div class="g0">BRAND EXPERIENCE PROJECT</div>
     <h1 class="title" style="margin-top:8px;">RED<br><span class="r">HOUR</span></h1>
@@ -213,8 +215,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">PROJECT OVERVIEW</div><div class="pno">02</div>
   </div>
   <div class="body">
@@ -246,8 +247,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">RE-FRAMING</div><div class="pno">03</div>
   </div>
   <div class="body">
@@ -268,8 +268,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">CONCEPT</div><div class="pno">04</div>
   </div>
   <div class="body">
@@ -289,8 +288,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">SPACE</div><div class="pno">05</div>
   </div>
   <div class="body" style="flex-direction:row;gap:18px;align-items:stretch;">
@@ -313,8 +311,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">DRESS CODE</div><div class="pno">06</div>
   </div>
   <div class="body">
@@ -341,8 +338,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">STAFF</div><div class="pno">07</div>
   </div>
   <div class="body">
@@ -364,8 +360,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">SCHEDULE</div><div class="pno">08</div>
   </div>
   <div class="body">
@@ -389,8 +384,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">18:00 — VIP</div><div class="pno">09</div>
   </div>
   <div class="body">
@@ -413,8 +407,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">19:00 — EXPERIENCE</div><div class="pno">10</div>
   </div>
   <div class="body">
@@ -435,8 +428,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">21:00 — PARTY</div><div class="pno">11</div>
   </div>
   <div class="body">
@@ -456,8 +448,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">FOOD EXPERIENCE</div><div class="pno">12</div>
   </div>
   <div class="body">
@@ -486,8 +477,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">GOODS</div><div class="pno">13</div>
   </div>
   <div class="body">
@@ -514,8 +504,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">CONTENT</div><div class="pno">14</div>
   </div>
   <div class="body">
@@ -539,8 +528,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">AFTER</div><div class="pno">15</div>
   </div>
   <div class="body">
@@ -560,8 +548,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">IMPACT</div><div class="pno">16</div>
   </div>
   <div class="body">
@@ -582,10 +569,9 @@ img{display:block;}
 <!-- ============ 17 KEY MESSAGE ============ -->
 <section class="page">
   <div class="edge"></div>
-  <svg class="cover-emblem ghost" style="opacity:.9;"><use href="#mask"/></svg>
+  <img class="cover-emblem ghost" style="opacity:.14;" src="assets/character-red.png" alt="">
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">KEY MESSAGE</div><div class="pno">17</div>
   </div>
   <div class="body">
@@ -600,8 +586,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">APPENDIX · VENUE</div><div class="pno">A1</div>
   </div>
   <div class="body">
@@ -627,8 +612,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">APPENDIX · ① ADULT ONLY</div><div class="pno">A2</div>
   </div>
   <div class="body" style="flex-direction:row;gap:16px;align-items:stretch;">
@@ -659,8 +643,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">APPENDIX · ② LOWKEY</div><div class="pno">A3</div>
   </div>
   <div class="body" style="flex-direction:row;gap:16px;align-items:stretch;">
@@ -691,8 +674,7 @@ img{display:block;}
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">APPENDIX · QUOTE ①</div><div class="pno">A4</div>
   </div>
   <div class="body">
@@ -726,8 +708,7 @@ img{display:block;}
 <section class="page" style="page-break-after:avoid;break-after:avoid;">
   <div class="edge"></div>
   <div class="hd">
-    <div class="brand"><svg class="emblem"><use href="#mask"/></svg>
-      <div class="wm"><span class="k">마왕</span><span class="r">족발</span><small>RED HOUR</small></div></div>
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
     <div class="kicker">APPENDIX · QUOTE ②</div><div class="pno">A5</div>
   </div>
   <div class="body">
