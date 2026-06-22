@@ -198,6 +198,16 @@ img{display:block;}
 /* p5 무드 필름스트립 — 전체 비율 보존(크롭 없음) */
 .moodstrip{flex:1;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:8px;margin-top:10px;min-height:0;overflow:hidden;}
 .moodstrip img{height:250px;width:auto;display:block;border-radius:7px;border:1px solid var(--line-soft);}
+
+/* 무드보드 풀페이지 — 3장 꽉 차게 */
+.moodfull{flex:1;display:flex;gap:9px;margin-top:12px;min-height:0;}
+.moodfull .fig{flex:1;min-width:0;border-radius:9px;overflow:hidden;border:1px solid var(--line-soft);background:#000;}
+.moodfull .fig img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* p16 키캡 키링 예시 — 크게 */
+.keycap-ex2{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.keycap-ex2 .fig{height:185px;border-radius:9px;overflow:hidden;border:1px solid var(--line-soft);background:#000;}
+.keycap-ex2 .fig img{width:100%;height:100%;object-fit:cover;display:block;}
 </style>
 </head>
 <body>
@@ -303,30 +313,61 @@ img{display:block;}
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">04</span></div>
 </section>
 
-<!-- ============ 05 MOOD BOARD ============ -->
+<!-- ============ 05 MOOD BOARD ① ============ -->
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">MOOD BOARD</div><div class="pno">05</div>
+    <div class="kicker">MOOD BOARD ①</div><div class="pno">05</div>
   </div>
   <div class="body">
     <div class="sec-no">REFERENCE — 파티 무드</div>
-    <h2 class="h1" style="margin-top:6px;font-size:27px;">붉은 조명 아래, <span class="r">마왕의 밤</span></h2>
-    <p class="lead" style="margin-top:6px;margin-bottom:2px;max-width:none;">레드 네온 · 거울 · DJ 부스 · 손 호러 연출이 만드는 강렬하고 중독적인 클럽 무드 — 공간 전체가 하나의 장면이 됩니다.</p>
-    <div class="moodstrip">
-      <img src="assets/img/mood/mood-1.jpg" alt="DJ">
-      <img src="assets/img/mood/mood-2.jpg" alt="거울 연출">
-      <img src="assets/img/mood/mood-3.jpg" alt="손 연출(벽)">
-      <img src="assets/img/mood/mood-4.jpg" alt="DJ 부스">
-      <img src="assets/img/mood/mood-5.jpg" alt="손 연출(천장)">
-      <img src="assets/img/mood/mood-6.jpg" alt="DJ">
-      <img src="assets/img/mood/mood-8.jpg" alt="파티">
-      <img src="assets/img/mood/mood-7.jpg" alt="클럽">
-      <img src="assets/img/mood/mood-9.jpg" alt="카드 연출">
+    <h2 class="h1" style="margin-top:6px;font-size:24px;">붉은 조명 아래, <span class="r">DJ와 파티</span></h2>
+    <div class="moodfull">
+      <div class="fig"><img src="assets/img/mood/mb1-1.jpg" alt="DJ 부스" style="object-position:center 45%;"></div>
+      <div class="fig"><img src="assets/img/mood/mb1-2.jpg" alt="라운지 DJ" style="object-position:center 55%;"></div>
+      <div class="fig"><img src="assets/img/mood/mb1-3.jpg" alt="파티 크라우드" style="object-position:center 65%;"></div>
     </div>
   </div>
   <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">05</span></div>
+</section>
+
+<!-- ============ 06 MOOD BOARD ② ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
+    <div class="kicker">MOOD BOARD ②</div><div class="pno">06</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">REFERENCE — 클럽 전경</div>
+    <h2 class="h1" style="margin-top:6px;font-size:24px;">사람들이 <span class="r">즐기는 밤</span></h2>
+    <div class="moodfull">
+      <div class="fig"><img src="assets/img/mood/mb2-1.jpg" alt="DJ와 크라우드" style="object-position:center 50%;"></div>
+      <div class="fig"><img src="assets/img/mood/mb2-2.jpg" alt="클럽 입구" style="object-position:center 62%;"></div>
+      <div class="fig"><img src="assets/img/mood/mb2-3.jpg" alt="손 연출" style="object-position:center 38%;"></div>
+    </div>
+  </div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">06</span></div>
+</section>
+
+<!-- ============ 07 MOOD BOARD ③ ============ -->
+<section class="page">
+  <div class="edge"></div>
+  <div class="hd">
+    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
+    <div class="kicker">MOOD BOARD ③</div><div class="pno">07</div>
+  </div>
+  <div class="body">
+    <div class="sec-no">REFERENCE — 공간 연출</div>
+    <h2 class="h1" style="margin-top:6px;font-size:24px;">마왕다운 <span class="r">디테일</span></h2>
+    <div class="moodfull">
+      <div class="fig"><img src="assets/img/mood/mb3-1.jpg" alt="미러 네온" style="object-position:center 45%;"></div>
+      <div class="fig"><img src="assets/img/mood/mb3-2.jpg" alt="레드 글러브 연출" style="object-position:center 40%;"></div>
+      <div class="fig"><img src="assets/img/mood/mb3-3.jpg" alt="카드 연출" style="object-position:center 45%;"></div>
+    </div>
+  </div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">07</span></div>
 </section>
 
 <!-- ============ 06 SPACE ============ -->
@@ -334,7 +375,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">SPACE</div><div class="pno">06</div>
+    <div class="kicker">SPACE</div><div class="pno">08</div>
   </div>
   <div class="body">
     <div class="sec-no">04 — 공간 방향성</div>
@@ -347,7 +388,7 @@ img{display:block;}
     </div>
     <div class="fig" style="height:150px;margin-top:15px;"><img src="assets/img/p5-space.jpg" alt="공간 레퍼런스" style="width:100%;height:100%;object-fit:cover;object-position:center 42%;"></div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">06</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">08</span></div>
 </section>
 
 <!-- ============ 06 DRESS CODE ============ -->
@@ -355,7 +396,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">DRESS CODE</div><div class="pno">07</div>
+    <div class="kicker">DRESS CODE</div><div class="pno">09</div>
   </div>
   <div class="body">
     <div class="sec-no">05 — 드레스 코드</div>
@@ -374,7 +415,7 @@ img{display:block;}
       <div><div class="fig" style="height:118px;"><img src="assets/img/p6-mirror.jpg" alt="미러 포토존"></div><div class="figcap">미러 포토존</div></div>
     </div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">07</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">09</span></div>
 </section>
 
 <!-- ============ 07 STAFF ============ -->
@@ -382,7 +423,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">STAFF</div><div class="pno">08</div>
+    <div class="kicker">STAFF</div><div class="pno">10</div>
   </div>
   <div class="body">
     <div class="sec-no">06 — 스태프 컨셉</div>
@@ -399,7 +440,7 @@ img{display:block;}
       <div class="fig" style="height:236px;"><img src="assets/img/p7-5.jpg" alt="레드 액세서리"></div>
     </div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">08</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">10</span></div>
 </section>
 
 <!-- ============ 08 SCHEDULE ============ -->
@@ -407,7 +448,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">SCHEDULE</div><div class="pno">09</div>
+    <div class="kicker">SCHEDULE</div><div class="pno">11</div>
   </div>
   <div class="body">
     <div class="sec-no">07 — 행사 일정</div>
@@ -423,7 +464,7 @@ img{display:block;}
     </div>
     <div class="intermission"><b>※ 20:00–21:00 인터미션</b> — 공간 전환 및 파티 세팅 / 현장 전체 전문 촬영으로 콘텐츠 아카이빙.</div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">09</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">11</span></div>
 </section>
 
 <!-- ============ 09 VIP EXPERIENCE ============ -->
@@ -431,7 +472,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">18:00 — VIP</div><div class="pno">10</div>
+    <div class="kicker">18:00 — VIP</div><div class="pno">12</div>
   </div>
   <div class="body">
     <div class="sec-no">07-1 — VIP EXPERIENCE (18:00–19:00)</div>
@@ -446,7 +487,7 @@ img{display:block;}
     </div>
     <p class="lead" style="margin-top:14px;"><b style="color:var(--blood-soft)">※</b> VIP 세션 전체를 전문 촬영 → 본편 파티의 기대감을 만드는 선행 콘텐츠로 활용.</p>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">10</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">12</span></div>
 </section>
 
 <!-- ============ 10 RED HOUR EXPERIENCE ============ -->
@@ -454,7 +495,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">19:00 — EXPERIENCE</div><div class="pno">11</div>
+    <div class="kicker">19:00 — EXPERIENCE</div><div class="pno">13</div>
   </div>
   <div class="body">
     <div class="sec-no">07-2 — RED HOUR EXPERIENCE (19:00–20:00) · 일반 고객 참여</div>
@@ -467,7 +508,7 @@ img{display:block;}
     </div>
     <p class="lead" style="margin-top:16px;"><b style="color:var(--blood-soft)">※</b> VIP 콘텐츠를 일반 고객 경험으로 확장.</p>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">11</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">13</span></div>
 </section>
 
 <!-- ============ 11 MAWANG NIGHT PARTY ============ -->
@@ -475,7 +516,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">21:00 — PARTY</div><div class="pno">12</div>
+    <div class="kicker">21:00 — PARTY</div><div class="pno">14</div>
   </div>
   <div class="body">
     <div class="sec-no">07-3 — MAWANG NIGHT PARTY (21:00–01:00)</div>
@@ -487,7 +528,7 @@ img{display:block;}
         <li>입장객 전원 <b>프리 드링크 1잔</b></li><li>마왕족발 <b>상품권 추첨</b></li><li>마왕 키캡 <b>증정 추첨 이벤트</b></li></ul></div>
     </div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">12</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">14</span></div>
 </section>
 
 <!-- ============ 12 FOOD ============ -->
@@ -495,7 +536,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">FOOD EXPERIENCE</div><div class="pno">13</div>
+    <div class="kicker">FOOD EXPERIENCE</div><div class="pno">15</div>
   </div>
   <div class="body">
     <div class="sec-no">08 — 푸드 경험</div>
@@ -516,7 +557,7 @@ img{display:block;}
       </div>
     </div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">13</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">15</span></div>
 </section>
 
 <!-- ============ 13 GOODS ============ -->
@@ -524,32 +565,35 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">GOODS</div><div class="pno">14</div>
+    <div class="kicker">GOODS</div><div class="pno">16</div>
   </div>
   <div class="body">
     <div class="sec-no">09 — 굿즈 전략</div>
     <h2 class="h1" style="margin-top:6px;font-size:30px;">달고 다니고 <span class="r">싶은 마왕</span></h2>
-    <div class="grid" style="grid-template-columns:1.6fr 1fr;margin-top:14px;align-items:start;">
-      <div class="card red" style="padding:18px 20px;">
-        <div class="ct" style="font-size:16px;"><span class="dot"></span>MAWANG KEYCAP KEYRING</div>
-        <div class="note" style="margin-bottom:10px;color:var(--blood-soft);font-weight:700;">요즘 트렌드인 키캡 키링 활용</div>
+    <div style="display:flex;gap:18px;margin-top:14px;align-items:stretch;">
+      <div class="card red" style="flex:0 0 38%;padding:16px 18px;">
+        <div class="ct" style="font-size:15px;"><span class="dot"></span>MAWANG KEYCAP KEYRING</div>
+        <div class="note" style="margin-bottom:9px;color:var(--blood-soft);font-weight:700;">요즘 트렌드인 키캡 키링 활용</div>
         <ul>
           <li>마왕 캐릭터 일러스트 적용</li><li>귀엽고 위트 있는 디자인</li><li>가방에 달고 다니기 좋은 사이즈</li><li>제작 단가 부담 낮음</li><li>높은 소장 가치</li></ul>
         <div class="note" style="margin-top:10px;font-size:10px;color:var(--ash-d);">※ 수량·구성·단가는 견적 부록(A4·A5) 참조</div>
         <span class="bignum">★</span>
       </div>
-      <div class="card"><div class="ct"><span class="dot"></span>기타 굿즈</div><ul>
-        <li><b>스티커팩</b> — 마왕 캐릭터·세계관</li><li><b>거울</b> 등 데일리 소품</li><li>블랙·레드 무드로 비주얼 톤 통일</li></ul>
-        <div class="note" style="margin-top:8px;font-size:10px;color:var(--ash-d);">키캡 키링이 메인 포인트, 기타 굿즈는 보조 구성</div></div>
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+        <div class="sec-no" style="font-size:12px;">키링 예시</div>
+        <div class="keycap-ex2" style="margin-top:8px;">
+          <div class="fig"><img src="assets/img/keycap/keycap-1.jpg" alt="키캡 키링 예시" style="object-position:center;"></div>
+          <div class="fig"><img src="assets/img/keycap/keycap-2.jpg" alt="키캡 키링 예시" style="object-position:center;"></div>
+          <div class="fig"><img src="assets/img/keycap/keycap-3.jpg" alt="키캡 키링 예시" style="object-position:center 40%;"></div>
+        </div>
+      </div>
     </div>
-    <div class="sec-no" style="margin-top:14px;font-size:11px;">키캡 키링 예시</div>
-    <div class="keycap-ex">
-      <div class="fig"><img src="assets/img/keycap/keycap-1.jpg" alt="키캡 키링 예시"></div>
-      <div class="fig"><img src="assets/img/keycap/keycap-2.jpg" alt="키캡 키링 예시"></div>
-      <div class="fig"><img src="assets/img/keycap/keycap-3.jpg" alt="키캡 키링 예시"></div>
+    <div class="card" style="margin-top:14px;"><div class="ct"><span class="dot"></span>기타 굿즈</div>
+      <ul style="columns:2;column-gap:30px;">
+        <li><b>스티커팩</b> — 마왕 캐릭터·세계관</li><li><b>거울</b> 등 데일리 소품</li><li>블랙·레드 무드로 비주얼 톤 통일</li><li>키캡 키링이 메인 포인트, 기타 굿즈는 보조 구성</li></ul>
     </div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">14</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">16</span></div>
 </section>
 
 <!-- ============ 14 CONTENT ============ -->
@@ -557,7 +601,7 @@ img{display:block;}
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">CONTENT</div><div class="pno">15</div>
+    <div class="kicker">CONTENT</div><div class="pno">17</div>
   </div>
   <div class="body">
     <div class="sec-no">10 — 콘텐츠 전략</div>
@@ -573,49 +617,34 @@ img{display:block;}
     </div>
     <p class="lead" style="margin-top:14px;max-width:none;"><b style="color:var(--blood-soft);">|</b> 콘텐츠 양성에 가장 비용을 많이 들여야 하며, 힙하고 즐거웠던 파티로 기억에 남고, 기록도 남도록 기획하는 것이 관건.</p>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">15</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">17</span></div>
 </section>
 
-<!-- ============ 15 AFTER ============ -->
+<!-- ============ AFTER & IMPACT (merged) ============ -->
 <section class="page">
   <div class="edge"></div>
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">AFTER</div><div class="pno">16</div>
+    <div class="kicker">AFTER & IMPACT</div><div class="pno">18</div>
   </div>
   <div class="body">
-    <div class="sec-no">11 — 행사 이후 활용</div>
-    <h2 class="h1" style="margin-top:6px;font-size:30px;">하룻밤을 <span class="r">브랜드 자산으로</span></h2>
-    <p class="lead">행사의 진짜 시작은 종료 이후입니다.<br>현장에서 확보한 콘텐츠는 지속적인 브랜드 자산으로 활용됩니다.</p>
-    <div class="card" style="margin-top:16px;padding:18px 22px;">
-      <div class="ct"><span class="dot"></span>활용 방안</div>
+    <div class="sec-no">11 — 행사 이후 활용 · 기대 효과</div>
+    <h2 class="h1" style="margin-top:6px;font-size:28px;">하룻밤을 <span class="r">브랜드 자산으로</span></h2>
+    <p class="lead" style="max-width:none;">행사의 진짜 시작은 종료 이후입니다. 현장에서 확보한 콘텐츠를 지속적인 브랜드 자산으로 활용해, 하루의 임팩트를 <b>세 방향의 효과</b>로 확장합니다.</p>
+    <div class="grid cols-3" style="margin-top:13px;">
+      <div class="card"><div class="ct"><span class="dot"></span>브랜드</div><ul>
+        <li>브랜드 이미지 리프레시</li><li>신규 팬덤 강화 · 찐팬 로열티</li><li>젠지세대 접점 확대</li><li>브랜드 아카이브 구축</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>마케팅</div><ul>
+        <li>숏폼 콘텐츠 대량 확보·확산</li><li>자발적 바이럴 유도</li><li>릴스·숏폼 재편집 배포</li><li>고품질 UGC 축적</li></ul></div>
+      <div class="card"><div class="ct"><span class="dot"></span>사업</div><ul>
+        <li>고객 재방문 유도</li><li>향후 협업 가능성 검토</li><li>점주 만족도 제고</li></ul></div>
+    </div>
+    <div class="card red" style="margin-top:13px;padding:14px 20px;"><div class="ct"><span class="dot"></span>행사 이후 활용 방안</div>
       <ul style="columns:2;column-gap:36px;">
         <li>릴스 광고 집행</li><li>브랜드 SNS 업로드</li><li>점주 대상 홍보 자료 활용</li><li>차기 행사 티저 활용 (연말 행사 2차)</li><li>브랜드 아카이브 구축</li></ul>
     </div>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">16</span></div>
-</section>
-
-<!-- ============ 16 IMPACT ============ -->
-<section class="page">
-  <div class="edge"></div>
-  <div class="hd">
-    <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">IMPACT</div><div class="pno">17</div>
-  </div>
-  <div class="body">
-    <div class="sec-no">12 — 기대 효과</div>
-    <h2 class="h1" style="margin-top:6px;font-size:30px;">하루의 임팩트, <span class="r">세 방향의 효과</span></h2>
-    <div class="grid cols-3" style="margin-top:16px;">
-      <div class="card"><div class="ct"><span class="dot"></span>브랜드</div><ul>
-        <li>브랜드 이미지 리프레시</li><li>신규 팬덤 강화</li><li>젠지세대 접점 확대</li><li>찐팬 로열티 부여</li><li>브랜드 아카이브 구축</li></ul></div>
-      <div class="card"><div class="ct"><span class="dot"></span>마케팅</div><ul>
-        <li>숏폼 콘텐츠 대량 확보, 생성 및 확산</li><li>자발적 바이럴 유도</li></ul></div>
-      <div class="card"><div class="ct"><span class="dot"></span>사업</div><ul>
-        <li>고객 재방문 유도</li><li>향후 협업 가능성 검토</li><li>점주 만족도 제고</li></ul></div>
-    </div>
-  </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">17</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">18</span></div>
 </section>
 
 <!-- ============ 17 KEY MESSAGE ============ -->
@@ -624,14 +653,14 @@ img{display:block;}
   <img class="cover-emblem ghost" style="opacity:.14;" src="assets/character-red.png" alt="">
   <div class="hd">
     <div class="brand"><img class="logo-img" src="assets/logo.png" alt="마왕족발"></div>
-    <div class="kicker">KEY MESSAGE</div><div class="pno">18</div>
+    <div class="kicker">KEY MESSAGE</div><div class="pno">19</div>
   </div>
   <div class="body">
     <div class="tag">KEY MESSAGE</div>
     <div class="quote" style="margin-top:22px;">“신메뉴 출시, 뻔한 증정 이벤트를 하는 행사가 아니라,<br>마왕이 마련한 공간에서 즐거운 시간을 부여하여<br><span class="r">마왕족발을 ‘각인’</span>시키는 밤.”</div>
     <p class="lead" style="margin-top:24px;font-size:14px;">단 하루의 강렬한 경험을 통해,<br>마왕족발을 <b>먹는 브랜드에서 기억되는 브랜드</b>로 확장하고자 합니다.</p>
   </div>
-  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">18</span></div>
+  <div class="ft"><span>RED HOUR · 마왕족발 브랜드 경험 프로젝트</span><span class="r">19</span></div>
 </section>
 
 <!-- ============ APPENDIX · VENUE ============ -->
