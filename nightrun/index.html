@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAWANG NIGHT RUN : GHOST COURSE — 기획안</title>
+<style>
+/* ============ FONTS ============ */
+@font-face{font-family:'Pretendard';src:url('fonts/PretendardVariable.woff2') format('woff2-variations');font-weight:45 920;font-style:normal;font-display:swap;}
+@font-face{font-family:'Bebas';src:url('fonts/BebasNeue-Full.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cinzel';src:url('fonts/Cinzel-700-Full.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+
+/* ============ TOKENS ============ */
+:root{
+  --bg:#0a0708;
+  --bg2:#120a0b;
+  --panel:#1a0f11;
+  --ink:#f4efee;
+  --muted:#9b8f8f;
+  --faint:#5f5556;
+  --red:#e10600;
+  --red-neon:#ff2318;
+  --red-deep:#5c0300;
+  --line:rgba(225,6,0,.22);
+  --line2:rgba(255,255,255,.08);
+  --glow:0 0 18px rgba(225,6,0,.55), 0 0 42px rgba(225,6,0,.25);
+  --glow-sm:0 0 10px rgba(225,6,0,.5);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#000;}
+body{
+  font-family:'Pretendard',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
+  line-height:1.6;
+}
+
+/* ============ PAGE ============ */
+@page{size:A4 landscape;margin:0;}
+.page{
+  position:relative;
+  width:297mm;height:210mm;
+  background:var(--bg);
+  overflow:hidden;
+  page-break-after:always;
+  padding:16mm 20mm;
+  display:flex;flex-direction:column;
+}
+.page:last-child{page-break-after:auto;}
+
+/* subtle vignette + grain texture on every slide */
+.page::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(120% 90% at 85% 15%, rgba(225,6,0,.10), transparent 55%),
+    radial-gradient(140% 120% at 10% 100%, rgba(120,3,0,.20), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+}
+.page > *{position:relative;z-index:1;}
+
+/* ============ COMMON HEADER / FOOTER ============ */
+.kicker{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Bebas';font-size:15pt;letter-spacing:.28em;
+  color:var(--red-neon);text-shadow:var(--glow-sm);
+  text-transform:uppercase;
+}
+.kicker .num{
+  font-family:'Pretendard';font-weight:500;font-size:11pt;color:var(--muted);text-shadow:none;letter-spacing:.01em;
+}
+.kicker .bar{width:34px;height:2px;background:var(--red);box-shadow:var(--glow-sm);}
+
+.foot{
+  position:absolute;left:20mm;right:20mm;bottom:9mm;z-index:2;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:7.5pt;letter-spacing:.18em;color:var(--faint);
+  text-transform:uppercase;font-weight:500;
+}
+.foot .logo{height:23px;filter:brightness(0) invert(1);opacity:.62;}
+.pageno{font-family:'Bebas';font-size:12pt;letter-spacing:.1em;color:var(--muted);}
+
+/* ============ TYPO HELPERS ============ */
+.eyebrow{font-family:'Bebas';font-size:13pt;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;}
+h1.title{font-family:'Pretendard';font-weight:900;font-size:33pt;line-height:1.12;letter-spacing:-.01em;}
+h2.title{font-family:'Pretendard';font-weight:900;font-size:26pt;line-height:1.15;letter-spacing:-.01em;}
+.red{color:var(--red-neon);text-shadow:var(--glow-sm);}
+.lede{font-size:12.5pt;color:var(--muted);font-weight:400;line-height:1.75;}
+strong,b{font-weight:700;color:#fff;}
+
+.head-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9mm;}
+.body-flex{flex:1;display:flex;}
+
+/* ============ CARDS ============ */
+.card{
+  background:linear-gradient(160deg, var(--panel), #0d0708);
+  border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;position:relative;overflow:hidden;
+}
+.card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);box-shadow:var(--glow-sm);}
+.card h3{font-size:13pt;font-weight:800;margin-bottom:6px;}
+.card p{font-size:10pt;color:var(--muted);line-height:1.6;}
+.card .ico{font-family:'Bebas';font-size:20pt;color:var(--red-neon);text-shadow:var(--glow-sm);display:block;margin-bottom:8px;letter-spacing:.05em;}
+
+ul.dash{list-style:none;}
+ul.dash li{position:relative;padding-left:20px;margin-bottom:11px;font-size:11pt;color:#ddd7d6;line-height:1.6;}
+ul.dash li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:2px;background:var(--red);box-shadow:var(--glow-sm);}
+ul.dash li .k{color:#fff;font-weight:700;}
+
+/* ============================================================= */
+/* COVER                                                          */
+/* ============================================================= */
+.cover{padding:0;justify-content:center;}
+.cover .devil{
+  position:absolute;right:-4mm;top:50%;transform:translateY(-50%);
+  height:184mm;opacity:.13;
+  filter:drop-shadow(0 0 60px rgba(225,6,0,.5));
+  z-index:0;
+}
+.cover .cwrap{padding:0 22mm;z-index:2;}
+.cover .cinvite{
+  display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;
+  font-family:'Pretendard';font-weight:700;font-size:12.5pt;letter-spacing:.14em;color:var(--red-neon);
+  text-shadow:var(--glow);
+}
+.cover .cinvite .bar{width:44px;height:2px;background:var(--red);box-shadow:var(--glow-sm);}
+.cover h1{
+  font-family:'Bebas';font-weight:400;font-size:74pt;line-height:.92;letter-spacing:.01em;
+  color:#fff;text-shadow:var(--glow);
+}
+.cover h1 .ghost{display:block;color:var(--red-neon);}
+.cover .sub{
+  margin-top:26px;font-size:14pt;line-height:1.7;color:#cfc7c6;max-width:150mm;
+  border-left:3px solid var(--red);padding-left:18px;box-shadow:-1px 0 var(--red);
+}
+.cover .sub b{color:#fff;}
+.cover .cmeta{
+  position:absolute;left:22mm;bottom:16mm;z-index:2;
+  display:flex;align-items:center;gap:16px;
+  font-size:8.5pt;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;
+}
+.cover .cmeta img{height:15px;filter:brightness(0) invert(1);opacity:.65;}
+.cover .cmeta .div{width:1px;height:13px;background:var(--faint);}
+
+/* ============================================================= */
+/* INTRO / narrative                                             */
+/* ============================================================= */
+.narr{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;}
+.narr .big{font-size:22pt;font-weight:800;line-height:1.45;letter-spacing:-.01em;max-width:210mm;}
+.narr .big .red{font-weight:900;}
+.narr .sm{margin-top:26px;font-size:12pt;color:var(--muted);line-height:1.8;max-width:190mm;}
+
+/* WHY two-col */
+.why-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;}
+.why-quote{font-size:19pt;font-weight:800;line-height:1.5;}
+.why-quote .red{font-weight:900;}
+
+/* OBJECTIVES grid */
+.obj-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center;}
+.obj-grid .card{display:flex;flex-direction:column;justify-content:center;}
+.obj-grid .card h3{font-size:14pt;}
+.obj-grid .card p{font-size:9.5pt;margin-top:5px;}
+
+/* CONCEPT */
+.concept-body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.concept-hero{
+  text-align:center;padding:0 0 30px;
+}
+.concept-hero .qq{font-family:'Pretendard';font-size:25pt;font-weight:900;color:#fff;text-shadow:var(--glow);line-height:1.3;letter-spacing:-.01em;}
+.concept-cols{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.concept-cols .card h3{color:var(--red-neon);text-shadow:var(--glow-sm);font-size:12pt;letter-spacing:.02em;}
+.concept-cols .card ul{list-style:none;margin-top:10px;}
+.concept-cols .card li{font-size:9.5pt;color:#d5cfce;padding-left:14px;position:relative;margin-bottom:7px;line-height:1.5;}
+.concept-cols .card li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:var(--glow-sm);}
+
+/* REWARD */
+.rew-grid{flex:1;display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px;align-items:stretch;align-content:center;}
+.medal-badge{
+  width:92px;height:92px;border-radius:50%;margin:2px 0 14px;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 40% 35%, #2a0f10, #0c0607);
+  border:2px solid var(--red);box-shadow:var(--glow), inset 0 0 20px rgba(225,6,0,.35);
+}
+.medal-badge img{height:56px;filter:drop-shadow(0 0 6px rgba(225,6,0,.7));}
+.medal-ex{display:flex;gap:16px;align-items:center;margin:2px 0 16px;}
+.medal-ex img{height:120px;width:auto;filter:drop-shadow(0 5px 12px rgba(0,0,0,.55)) drop-shadow(0 0 10px rgba(225,6,0,.18));}
+.tag{display:inline-block;font-family:'Bebas';font-size:11pt;letter-spacing:.12em;color:var(--red-neon);border:1px solid var(--line);border-radius:6px;padding:3px 10px;margin:4px 6px 4px 0;text-shadow:var(--glow-sm);}
+.goods-ex{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px;}
+.food-ex{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px;}
+.rew-grid .t{aspect-ratio:1/1;border-radius:7px;overflow:hidden;border:1px solid var(--line);background:#0d0708;}
+.rew-grid .t img{width:100%;height:100%;object-fit:cover;display:block;}
+.food-ex .t.wide{grid-column:span 2;aspect-ratio:16/9;}
+
+/* COURSE FLOW timeline */
+.flow{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch;position:relative;margin-top:6mm;}
+.flow .step{padding:0 16px;position:relative;display:flex;flex-direction:column;}
+.flow .step:not(:last-child)::after{content:"";position:absolute;right:0;top:34px;bottom:0;width:1px;background:var(--line2);}
+.flow .snum{font-family:'Bebas';font-size:15pt;color:var(--bg);background:var(--red);box-shadow:var(--glow-sm);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.flow .szone{font-family:'Bebas';font-size:13pt;letter-spacing:.14em;color:var(--red-neon);text-shadow:var(--glow-sm);margin-bottom:4px;}
+.flow .stitle{font-size:13.5pt;font-weight:800;margin-bottom:12px;line-height:1.25;}
+.flow .step p{font-size:9.5pt;color:var(--muted);line-height:1.6;}
+.flow .step p + p{margin-top:9px;}
+.flow .step .hl{color:#e6dfde;font-weight:600;}
+
+/* SPEC */
+.spec-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center;}
+.spec-grid .card{display:flex;flex-direction:column;justify-content:center;}
+.spec-grid .lab{font-family:'Pretendard';font-weight:700;font-size:10.5pt;letter-spacing:.03em;color:var(--muted);margin-bottom:8px;}
+.spec-grid .val{font-size:17pt;font-weight:800;color:#fff;line-height:1.2;}
+.spec-grid .val small{display:block;font-size:9.5pt;font-weight:500;color:var(--muted);margin-top:6px;letter-spacing:0;}
+
+/* TONE */
+.tone-body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.tone-hero{text-align:center;padding:0 0 22px;}
+.tone-hero .q{font-size:16pt;font-weight:800;line-height:1.5;max-width:200mm;margin:0 auto;color:#efe9e8;}
+.tone-cols{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.tone-cols .card{display:flex;flex-direction:column;justify-content:center;text-align:center;padding:20px 18px;}
+.tone-cols .card::after{display:none;}
+.tone-cols .n{font-family:'Cinzel';font-size:20pt;font-weight:700;color:var(--red-neon);text-shadow:var(--glow-sm);margin-bottom:12px;}
+.tone-cols .card p{font-size:11pt;color:#d5cfce;line-height:1.6;}
+
+/* MOOD BOARD */
+.mood-page{padding:14mm 16mm;}
+.gallery{flex:1;display:flex;gap:16px;margin-top:7mm;align-items:center;justify-content:center;}
+.gallery .g{flex:1;height:100%;display:flex;align-items:center;justify-content:center;}
+.gallery .g img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border-radius:10px;border:1px solid var(--line);box-shadow:0 0 26px rgba(0,0,0,.55);}
+/* uniform portrait gallery — equal-size boxes (mild cover crop) */
+.gallery.uniform .g{flex:1;height:auto;aspect-ratio:3/4;display:block;overflow:hidden;border-radius:10px;border:1px solid var(--line);box-shadow:0 0 26px rgba(0,0,0,.55);}
+.gallery.uniform .g img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border:none;border-radius:0;}
+
+/* CLOSING */
+.closing{padding:0;justify-content:center;align-items:center;text-align:center;}
+.closing .devil{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:150mm;opacity:.10;filter:drop-shadow(0 0 50px rgba(225,6,0,.5));z-index:0;}
+.closing .cwrap{z-index:2;}
+.closing .fin{font-family:'Cinzel';font-size:17pt;font-weight:700;color:var(--muted);letter-spacing:.05em;}
+.closing h1{font-family:'Bebas';font-size:58pt;line-height:1;color:#fff;text-shadow:var(--glow);margin:14px 0 22px;}
+.closing h1 .red{color:var(--red-neon);}
+.closing .logo{height:34px;filter:brightness(0) invert(1);opacity:.8;margin-top:8px;}
+.closing .rule{width:60px;height:2px;background:var(--red);box-shadow:var(--glow-sm);margin:0 auto 26px;}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. COVER ============ -->
+<section class="page cover">
+  <img class="devil" src="assets/character-red.png" alt="">
+  <div class="cwrap">
+    <div class="cinvite"><span class="bar"></span>마왕이 보내는 수상한 초대장</div>
+    <h1>MAWANG NIGHT RUN<span class="ghost">: GHOST COURSE</span></h1>
+    <p class="sub">도시의 밤을 가장 <b>마왕스럽게</b> 달리는 브랜드 프로젝트.<br>기록을 위한 러닝이 아니라, <b>마왕의 초대를 받아<br>하나의 이야기를 완주하는 경험.</b></p>
+  </div>
+  <div class="cmeta">
+    <img src="assets/logo.png" alt="마왕족발">
+    <span class="div"></span>
+    <span>BRAND EXPERIENCE PROPOSAL</span>
+    <span class="div"></span>
+    <span>2026</span>
+  </div>
+</section>
+
+<!-- ============ 2. INTRO ============ -->
+<section class="page">
+  <div class="head-row">
+    <div class="kicker"><span class="bar"></span>INTRO <span class="num">/ 러닝은 문화가 되었다</span></div>
+  </div>
+  <div class="narr">
+    <p class="big">러닝은 이제 단순한 운동이 아니라 <span class="red">하나의 문화</span>가 되었습니다.</p>
+    <p class="sm">사람들은 기록만이 아니라,<br>특별한 코스를 경험하고 · 같은 취향의 사람과 함께하며<br>· 그 순간을 사진과 영상으로 남기기 위해 달립니다.</p>
+    <p class="sm">마왕족발은 이 러닝 문화에<br><strong>‘마왕다운 경험’</strong>을 더하고자 합니다.</p>
+    <p class="sm">MAWANG NIGHT RUN은 기록을 위한 러닝이 아니라,<br><strong>마왕의 초대를 받아 하나의 이야기를 완주하는<br>브랜드 프로젝트</strong>입니다.</p>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">02</span></div>
+</section>
+
+<!-- ============ 3. WHY ============ -->
+<section class="page">
+  <div class="head-row">
+    <div class="kicker"><span class="bar"></span>WHY <span class="num">/ 마왕족발이 왜 진행하는가</span></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-quote">
+      브랜드는 <span class="red">음식만으로</span> 기억되지 않습니다.<br>
+      사람들은 <span class="red">직접 경험한 순간</span>을 기억합니다.
+    </div>
+    <div>
+      <ul class="dash">
+        <li>지난 10년 동안, 마왕족발은 대부분의 고객을 <span class="k">배달 앱</span>에서 만났습니다.</li>
+        <li>MAWANG NIGHT RUN은 배달 앱 속 브랜드였던 마왕족발이 <span class="k">고객과 같은 공간에서 같은 밤</span>을 보내는 시도입니다.</li>
+        <li>직접 <span class="k">경험되고 · 기억되고 · 공유되는</span> 브랜드가 되기 위한 새로운 도전입니다.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">03</span></div>
+</section>
+
+<!-- ============ 4. OBJECTIVES ============ -->
+<section class="page">
+  <div class="head-row">
+    <div>
+      <div class="eyebrow">OBJECTIVES</div>
+      <h2 class="title" style="margin-top:8px">프로젝트 목표</h2>
+    </div>
+  </div>
+  <div class="obj-grid">
+    <div class="card"><span class="ico">01</span><h3>브랜드 이미지 리프레시</h3><p>배달 브랜드를 넘어 경험형 브랜드로 이미지 전환</p></div>
+    <div class="card"><span class="ico">02</span><h3>MZ세대 접점 확대</h3><p>러닝·나이트 컬처를 통한 신규 타깃 유입</p></div>
+    <div class="card"><span class="ico">03</span><h3>찐팬 로열티 강화</h3><p>직접 경험으로 브랜드 커뮤니티·재방문 유도</p></div>
+    <div class="card"><span class="ico">04</span><h3>숏폼 · 바이럴 콘텐츠</h3><p>인증형 비주얼로 SNS 확산 콘텐츠 확보</p></div>
+    <div class="card"><span class="ico">05</span><h3>브랜드 아카이브 구축</h3><p>행사 자산을 축적하는 브랜드 IP 아카이브</p></div>
+    <div class="card"><span class="ico">06</span><h3>자체 IP · 시리즈화</h3><p>매년 반복 가능한 자체 시리즈 IP로 확장</p></div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">04</span></div>
+</section>
+
+<!-- ============ 5. CONCEPT ============ -->
+<section class="page">
+  <div class="head-row" style="margin-bottom:2mm">
+    <div class="kicker"><span class="bar"></span>CONCEPT <span class="num">/ 행사 컨셉</span></div>
+  </div>
+  <div class="concept-body">
+  <div class="concept-hero">
+    <div class="qq">“마왕의 초대 : 어둠 속 코스를 완주하라!”</div>
+  </div>
+  <div class="concept-cols">
+    <div class="card"><h3>MOOD / KEYWORD</h3>
+      <ul><li>마왕의 초대 · 수상한 러닝</li><li>호러 · 네온 · 스산한 분위기</li><li>인증형 브랜드 경험</li><li>기억되는 브랜드</li></ul>
+    </div>
+    <div class="card"><h3>연출 STAGING</h3>
+      <ul><li>스모그 · 네온 · 야광</li><li>귀신 포토존</li><li>조명 워크(라이트 스루)</li><li>레드 · 실루엣 · 그림자</li></ul>
+    </div>
+    <div class="card"><h3>컬쳐 CULTURE</h3>
+      <ul><li>러닝 편집샵 콜라보(협찬 검토)</li><li>인플루언서 · 러닝씬 인프라</li><li>SNS 바이럴</li><li>인증샷 설계</li></ul>
+    </div>
+  </div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">05</span></div>
+</section>
+
+<!-- ============ 6. REWARD & GOODS ============ -->
+<section class="page">
+  <div class="head-row">
+    <div>
+      <div class="eyebrow">REWARD &amp; GOODS</div>
+      <h2 class="title" style="margin-top:8px">완주자에게 남는 <span class="red">마왕의 증표</span></h2>
+    </div>
+  </div>
+  <div class="rew-grid">
+    <div class="card">
+      <div class="medal-ex">
+        <img src="assets/img/goods/medal-1.png" alt="">
+        <img src="assets/img/goods/medal-2.png" alt="">
+      </div>
+      <h3>마왕 얼굴 메달</h3>
+      <p style="margin-top:6px">완주자에게 증정하는 마왕 페이스 메달. (예시 목업)</p>
+      <div style="margin-top:12px">
+        <span class="tag">MARK OF MAWANG</span>
+        <span class="tag">THE DEVIL'S MARK</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>3구 키캡 키링</h3>
+      <p style="margin-top:6px">마왕 캐릭터 · 10th 손그림 · 삼지창 · 족발 · 불 · 러닝 · 유령 일러스트를 조금은 귀엽게.</p>
+      <div class="goods-ex">
+        <div class="t"><img src="assets/img/goods/g1.jpg" alt=""></div>
+        <div class="t"><img src="assets/img/goods/g2.jpg" alt=""></div>
+        <div class="t"><img src="assets/img/goods/g3.jpg" alt=""></div>
+        <div class="t"><img src="assets/img/goods/g4.png" alt=""></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>러닝 후 · 마왕의 식탁</h3>
+      <p style="margin-top:6px">블러드 칵테일 · 논알콜 레드 드링크와 단백질 보충(족발버거 등).</p>
+      <div class="food-ex">
+        <div class="t wide"><img src="assets/img/food/burger.jpg" alt=""></div>
+        <div class="t"><img src="assets/img/food/drink-1.jpg" alt=""></div>
+        <div class="t"><img src="assets/img/food/drink-2.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">06</span></div>
+</section>
+
+<!-- ============ 7. COURSE FLOW ============ -->
+<section class="page">
+  <div class="head-row">
+    <div>
+      <div class="eyebrow">COURSE FLOW</div>
+      <h2 class="title" style="margin-top:8px">코스 흐름 구성</h2>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="szone">START ZONE</div>
+      <div class="stitle">마왕 소환</div>
+      <p class="hl">마왕 초대에 응한 참가자 컨셉.</p>
+      <p>체크인 · 야광 팔찌 배포 · 배번 · 출발 카운트다운. 레드 조명 &amp; 스모그로 소환 분위기 연출.</p>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="szone">MID COURSE</div>
+      <div class="stitle">어둠의 구간</div>
+      <p class="hl">귀신 포토존 · 네온존 · 그림자 터널 · 야광 오브제.</p>
+      <p>놀래키는 구간은 지양. 뛰면서 지나가도 기억에 남고 사진이 예쁜 비주얼 중심.</p>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="szone">FINISH ZONE</div>
+      <div class="stitle">마왕의 증표</div>
+      <p class="hl">완주 메달 · 키캡 키링 굿즈 증정.</p>
+      <p>완주 인증 포토월 · 숏폼 촬영 포인트로 인증·확산 유도.</p>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="szone">AFTER</div>
+      <div class="stitle">마왕의 식탁</div>
+      <p class="hl">블러드 칵테일 · 논알콜 레드 드링크 + 족발버거.</p>
+      <p>참가자 교류 · 인증샷 · 굿즈 촬영. 브랜드 경험으로 이어지는 애프터.</p>
+    </div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">07</span></div>
+</section>
+
+<!-- ============ 8. SPEC ============ -->
+<section class="page">
+  <div class="head-row">
+    <div>
+      <div class="eyebrow">EVENT SPEC</div>
+      <h2 class="title" style="margin-top:8px">행사 스펙</h2>
+    </div>
+  </div>
+  <div class="spec-grid">
+    <div class="card"><div class="lab">일정 · 시간</div><div class="val">9 – 10월 <small>야간(Night) 진행</small></div></div>
+    <div class="card"><div class="lab">모집 인원</div><div class="val">1 – 200명 <small>규모 조정 가능</small></div></div>
+    <div class="card"><div class="lab">코스</div><div class="val">5 – 10 km <small>완주형 코스</small></div></div>
+    <div class="card"><div class="lab">장소</div><div class="val">공원 <small>율동공원 · 탄천 등 (허가 or 대행사 섭외)</small></div></div>
+    <div class="card"><div class="lab">안전</div><div class="val">안전요원 필수 <small>야간 러닝 안전 관리 운영</small></div></div>
+    <div class="card"><div class="lab">참가비</div><div class="val">무료 ~ 최소 <small>진입 장벽 최소화</small></div></div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">08</span></div>
+</section>
+
+<!-- ============ 9. TONE & MANNER ============ -->
+<section class="page">
+  <div class="head-row" style="margin-bottom:2mm">
+    <div class="kicker"><span class="bar"></span>TONE &amp; MANNER</div>
+  </div>
+  <div class="tone-body">
+  <div class="tone-hero">
+    <div class="q">“무섭지만 과하지 않고, 참여자가 <span class="red">자연스럽게 인증하고 공유</span>할 수 있는 비주얼 중심의 체험 구성”</div>
+  </div>
+  <div class="tone-cols">
+    <div class="card"><div class="n">I</div><p><strong>즐길 수 있는 호러</strong><br>진짜 공포보다 즐길 수 있는 스산한 호러 감성</p></div>
+    <div class="card"><div class="n">II</div><p><strong>찍고 싶은 비주얼</strong><br>놀라게 하는 장치보다 찍고 싶어지는 감각적인 비주얼</p></div>
+    <div class="card"><div class="n">III</div><p><strong>마왕다운 다크함</strong><br>레드 네온 · 스모그 · 그림자 · 실루엣으로 만드는 마왕족발만의 야간 무드</p></div>
+  </div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">09</span></div>
+</section>
+
+<!-- ============ 10. MOOD BOARD 1 ============ -->
+<section class="page mood-page">
+  <div class="head-row" style="margin-bottom:0">
+    <div class="kicker"><span class="bar"></span>MOOD BOARD <span class="num">/ RED · NEON · GHOST</span></div>
+  </div>
+  <div class="gallery uniform">
+    <div class="g"><img src="assets/img/mood/mood-1.png" alt=""></div>
+    <div class="g"><img src="assets/img/mood/mood-2.png" alt=""></div>
+    <div class="g"><img src="assets/img/mood/mood-4.png" alt=""></div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">10</span></div>
+</section>
+
+<!-- ============ 11. MOOD BOARD 2 ============ -->
+<section class="page mood-page">
+  <div class="head-row" style="margin-bottom:0">
+    <div class="kicker"><span class="bar"></span>MOOD BOARD <span class="num">/ GHOST · SHADOW</span></div>
+  </div>
+  <div class="gallery uniform">
+    <div class="g"><img src="assets/img/mood/mood-3.png" alt=""></div>
+    <div class="g"><img src="assets/img/mood/mood-7.png" alt=""></div>
+    <div class="g"><img src="assets/img/mood/mood-5.png" alt=""></div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">11</span></div>
+</section>
+
+<!-- ============ 12. MOOD BOARD 3 ============ -->
+<section class="page mood-page">
+  <div class="head-row" style="margin-bottom:0">
+    <div class="kicker"><span class="bar"></span>MOOD BOARD <span class="num">/ LIGHT · SMOKE · CORRIDOR</span></div>
+  </div>
+  <div class="gallery">
+    <div class="g"><img src="assets/img/mood/mood-6.png" alt=""></div>
+    <div class="g"><img src="assets/img/mood/mood-8.png" alt=""></div>
+  </div>
+  <div class="foot"><img class="logo" src="assets/logo.png" alt="">
+    <span>MAWANG NIGHT RUN : GHOST COURSE</span><span class="pageno">12</span></div>
+</section>
+
+<!-- ============ 12. CLOSING ============ -->
+<section class="page closing">
+  <img class="devil" src="assets/character-red.png" alt="">
+  <div class="cwrap">
+    <div class="fin">The Invitation</div>
+    <h1>RUN INTO<br>THE <span class="red">DARK</span></h1>
+    <div class="rule"></div>
+    <p class="lede" style="max-width:150mm;margin:0 auto">마왕의 초대에 응한 당신, 어둠 속 코스를 완주하라.</p>
+    <img class="logo" src="assets/logo.png" alt="마왕족발">
+  </div>
+</section>
+
+</body>
+</html>
