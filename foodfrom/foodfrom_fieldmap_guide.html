@@ -1,0 +1,377 @@
+<style>
+  :root{
+    --paper:#FCFAF5; --paper-2:#F6F0E6; --card:#FFFFFF;
+    --ink:#231F1B; --ink-soft:#655C52; --ink-faint:#9A9184;
+    --line:#E7DDCE; --line-soft:#F1E9DB;
+    --accent:#C1362C; --accent-deep:#8E2019;
+    --edit-fg:#AE2E24; --edit-bg:#F6E1DC;
+    --semi-fg:#8A5A00; --semi-bg:#F3E7CF;
+    --fixed-fg:#6E665B; --fixed-bg:#ECE6DA;
+    --img-fg:#256B4B; --img-bg:#DBEADE;
+    --shadow:0 1px 2px rgba(70,45,20,.05),0 10px 28px -14px rgba(70,45,20,.16);
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',system-ui,sans-serif;
+    --mono:'SF Mono','Consolas','D2Coding',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#17140F; --paper-2:#1F1A15; --card:#221D18;
+      --ink:#F1EADF; --ink-soft:#B2A897; --ink-faint:#7C7365;
+      --line:#332C24; --line-soft:#292319;
+      --accent:#E86F60; --accent-deep:#F1978A;
+      --edit-fg:#EE897B; --edit-bg:#39231F;
+      --semi-fg:#DCA950; --semi-bg:#332818;
+      --fixed-fg:#B2A897; --fixed-bg:#2B251E;
+      --img-fg:#6FC198; --img-bg:#1D2C23;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#FCFAF5; --paper-2:#F6F0E6; --card:#FFFFFF;
+    --ink:#231F1B; --ink-soft:#655C52; --ink-faint:#9A9184;
+    --line:#E7DDCE; --line-soft:#F1E9DB;
+    --accent:#C1362C; --accent-deep:#8E2019;
+    --edit-fg:#AE2E24; --edit-bg:#F6E1DC;
+    --semi-fg:#8A5A00; --semi-bg:#F3E7CF;
+    --fixed-fg:#6E665B; --fixed-bg:#ECE6DA;
+    --img-fg:#256B4B; --img-bg:#DBEADE;
+    --shadow:0 1px 2px rgba(70,45,20,.05),0 10px 28px -14px rgba(70,45,20,.16);
+  }
+  :root[data-theme="dark"]{
+    --paper:#17140F; --paper-2:#1F1A15; --card:#221D18;
+    --ink:#F1EADF; --ink-soft:#B2A897; --ink-faint:#7C7365;
+    --line:#332C24; --line-soft:#292319;
+    --accent:#E86F60; --accent-deep:#F1978A;
+    --edit-fg:#EE897B; --edit-bg:#39231F;
+    --semi-fg:#DCA950; --semi-bg:#332818;
+    --fixed-fg:#B2A897; --fixed-bg:#2B251E;
+    --img-fg:#6FC198; --img-bg:#1D2C23;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .wrap{max-width:940px;margin:0 auto;padding:clamp(28px,6vw,72px) clamp(18px,5vw,44px) 96px;}
+
+  /* ---------- header ---------- */
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 14px;}
+  h1{font-size:clamp(2.1rem,6vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+    margin:0 0 18px;text-wrap:balance;}
+  h1 .thin{color:var(--ink-soft);font-weight:800;}
+  .lede{font-size:clamp(1rem,2.3vw,1.12rem);color:var(--ink-soft);max-width:60ch;margin:0 0 22px;}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .tag{font-family:var(--mono);font-size:.74rem;color:var(--ink-soft);
+    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;}
+  .tag b{color:var(--accent-deep);font-weight:700;}
+
+  .rule{height:1px;background:var(--line);border:0;margin:clamp(30px,5vw,46px) 0;}
+
+  /* ---------- role split ---------- */
+  .roles{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:620px){.roles{grid-template-columns:1fr;}}
+  .role{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;
+    box-shadow:var(--shadow);}
+  .role h3{margin:0 0 4px;font-size:1.02rem;font-weight:800;letter-spacing:-.01em;}
+  .role .who{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;}
+  .role.you .who{color:var(--img-fg);}
+  .role ul{margin:0;padding-left:1.05em;color:var(--ink-soft);font-size:.9rem;}
+  .role li{margin:5px 0;}
+  .role li b{color:var(--ink);font-weight:700;}
+
+  /* ---------- legend ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
+    padding:14px 18px;font-size:.86rem;}
+  .legend .lg{display:flex;align-items:center;gap:8px;color:var(--ink-soft);}
+
+  .chip{display:inline-flex;align-items:center;font-size:.7rem;font-weight:700;letter-spacing:.02em;
+    padding:3px 9px;border-radius:6px;white-space:nowrap;line-height:1.4;}
+  .chip.edit{color:var(--edit-fg);background:var(--edit-bg);}
+  .chip.semi{color:var(--semi-fg);background:var(--semi-bg);}
+  .chip.fixed{color:var(--fixed-fg);background:var(--fixed-bg);}
+  .chip.img{color:var(--img-fg);background:var(--img-bg);}
+
+  /* ---------- spine ---------- */
+  .spine{position:relative;margin-top:8px;}
+  .spine::before{content:"";position:absolute;left:19px;top:22px;bottom:26px;width:2px;
+    background:linear-gradient(var(--line),var(--line));z-index:0;}
+  @media (max-width:620px){.spine::before{left:15px;}}
+
+  .block{position:relative;display:grid;grid-template-columns:40px 1fr;gap:20px;
+    padding:22px 0;}
+  @media (max-width:620px){.block{grid-template-columns:32px 1fr;gap:14px;}}
+  .num{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--accent);color:#fff;font-weight:800;font-size:1rem;
+    font-variant-numeric:tabular-nums;box-shadow:0 0 0 5px var(--paper);}
+  @media (max-width:620px){.num{width:32px;height:32px;font-size:.82rem;box-shadow:0 0 0 4px var(--paper);}}
+  :root[data-theme="dark"] .num{color:#17140F;}
+  @media (prefers-color-scheme:dark){.num{color:#17140F;}}
+  :root[data-theme="light"] .num{color:#fff;}
+
+  .block__body{min-width:0;padding-top:2px;}
+  .block__head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px;}
+  .block__title{font-size:1.22rem;font-weight:800;letter-spacing:-.02em;margin:0;}
+  .block__sub{font-size:.82rem;color:var(--ink-faint);}
+  .block__note{font-size:.9rem;color:var(--ink-soft);margin:6px 0 14px;}
+
+  /* gif marker */
+  .block--gif{padding:8px 0;}
+  .block--gif .num{width:40px;height:40px;background:transparent;border:2px dashed var(--accent);
+    color:var(--accent);font-size:.9rem;}
+  @media (max-width:620px){.block--gif .num{width:32px;height:32px;}}
+  .gifline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--ink-soft);
+    font-size:.9rem;padding-top:8px;}
+  .gifline b{color:var(--ink);font-weight:700;}
+
+  /* ---------- table ---------- */
+  .tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);
+    box-shadow:var(--shadow);}
+  table{width:100%;border-collapse:collapse;font-size:.875rem;min-width:520px;}
+  thead th{text-align:left;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-faint);padding:12px 16px;border-bottom:1px solid var(--line);
+    background:var(--paper-2);white-space:nowrap;}
+  tbody td{padding:12px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+  tbody tr:last-child td{border-bottom:0;}
+  .fname{font-weight:700;color:var(--ink);white-space:nowrap;}
+  .ex{color:var(--ink-soft);}
+  .ex q{color:var(--ink);quotes:"“" "”";}
+  .ex q::before{content:open-quote;color:var(--ink-faint);}
+  .ex q::after{content:close-quote;color:var(--ink-faint);}
+  .guide{color:var(--ink-soft);font-size:.83rem;}
+  code{font-family:var(--mono);font-size:.82em;background:var(--paper-2);border:1px solid var(--line-soft);
+    padding:1px 6px;border-radius:5px;color:var(--accent-deep);white-space:nowrap;}
+  :root[data-theme="dark"] code, @media (prefers-color-scheme:dark){}
+
+  /* combined soguem */
+  .soguem thead th:first-child{width:56px;}
+  .snum{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:1rem;}
+
+  /* ---------- workflow ---------- */
+  .flow{counter-reset:step;display:grid;gap:12px;margin-top:8px;}
+  .step{position:relative;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);}
+  .step::before{counter-increment:step;content:counter(step);
+    font-family:var(--mono);font-weight:700;font-size:.95rem;color:#fff;background:var(--accent);
+    width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+  :root[data-theme="dark"] .step::before{color:#17140F;}
+  @media (prefers-color-scheme:dark){.step::before{color:#17140F;}}
+  :root[data-theme="light"] .step::before{color:#fff;}
+  .step p{margin:0;font-size:.92rem;color:var(--ink-soft);}
+  .step p b{color:var(--ink);font-weight:700;}
+  .step .who2{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin-right:8px;}
+  .step .who2.you{color:var(--img-fg);}
+
+  h2.sec{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0 0 18px;display:flex;align-items:center;gap:12px;}
+  h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  .foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:.82rem;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;}
+  .foot code{white-space:normal;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .block,.role,.step,.legend{animation:rise .5s cubic-bezier(.2,.7,.2,1) both;}
+    @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">푸드프롬 · 상세페이지 제작 시스템</p>
+    <h1>상세페이지 템플릿<br><span class="thin">필드 맵</span></h1>
+    <p class="lede">제품 하나를 새로 만들 때, 어느 자리에 무엇이 들어가는지 한눈에 보는 기입표.
+      블록마다 <b>바꿀 것(가변)</b>과 <b>그대로 둘 것(공통)</b>을 색으로 구분했습니다.</p>
+    <div class="meta">
+      <span class="tag">네이버 860 기준</span>
+      <span class="tag">레퍼런스 · <b>곰탕</b></span>
+      <span class="tag">마스터 node <b>3:197</b></span>
+      <span class="tag">x=<b>24000</b></span>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <!-- roles -->
+  <div class="roles">
+    <div class="role claude">
+      <p class="who">Claude 담당</p>
+      <h3>구조 · 이미지 · 카피</h3>
+      <ul>
+        <li>마스터 섹션 <b>복제</b> → 신제품 섹션 생성</li>
+        <li><b>이미지 교체</b> · 소구점 개수 가감</li>
+        <li>제품 <b>카피/설명 문구 전량 작성</b></li>
+      </ul>
+    </div>
+    <div class="role you">
+      <p class="who">회원님 담당</p>
+      <h3>텍스트 붙여넣기</h3>
+      <ul>
+        <li>상용 폰트가 걸린 <b>텍스트를 Figma에서 입력</b></li>
+        <li>브랜드 폰트 <b>100% 보존</b> (룩 그대로)</li>
+        <li>세부 요소 자유 편집</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="font-size:.82rem;color:var(--ink-faint);margin:14px 2px 0;">
+    ※ 원격 Figma 환경엔 상용 폰트(Rix·Sandoll)가 없어 텍스트 직접 수정 시 폰트가 바뀝니다. 그래서 텍스트 입력만 회원님 PC에서 진행 — 나머지는 자동.
+  </p>
+
+  <hr class="rule">
+
+  <!-- legend -->
+  <div class="legend">
+    <span class="lg"><span class="chip edit">가변</span> 제품마다 교체</span>
+    <span class="lg"><span class="chip semi">반가변</span> 조건부 교체</span>
+    <span class="lg"><span class="chip fixed">공통</span> 고정 · 브랜드 공용</span>
+    <span class="lg"><span class="chip img">이미지</span> 이미지 교체</span>
+  </div>
+
+  <div style="height:14px;"></div>
+
+  <!-- ================= SPINE ================= -->
+  <div class="spine">
+
+    <!-- ① header -->
+    <section class="block">
+      <div class="num">1</div>
+      <div class="block__body">
+        <div class="block__head"><h3 class="block__title">헤더</h3>
+          <span class="block__sub">제품명 · 간단설명 · 메인이미지 · 브랜드설명</span></div>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>필드</th><th>구분</th><th>곰탕 예시</th><th>가이드</th></tr></thead>
+            <tbody>
+              <tr><td class="fname">로고 자리</td><td><span class="chip fixed">공통</span></td><td class="ex"><q>푸드프롬</q></td><td class="guide">로고 확정 시 이미지로 교체(임시 텍스트)</td></tr>
+              <tr><td class="fname">제품명</td><td><span class="chip edit">가변</span></td><td class="ex"><q>아롱아롱 고기곰탕</q></td><td class="guide">1~2줄, 초대형 디스플레이</td></tr>
+              <tr><td class="fname">간단설명</td><td><span class="chip edit">가변</span></td><td class="ex"><q>국물 반, 고기 반! … 고기 한 점과 함께 드세요.</q></td><td class="guide">2~3줄, 핵심 매력</td></tr>
+              <tr><td class="fname">메인 이미지</td><td><span class="chip img">이미지</span></td><td class="ex">곰탕 연출컷</td><td class="guide">860w</td></tr>
+              <tr><td class="fname">연출 고지</td><td><span class="chip fixed">공통</span></td><td class="ex"><q>※ 해당 이미지는 연출 이미지…</q></td><td class="guide">고정</td></tr>
+              <tr><td class="fname">브랜드설명</td><td><span class="chip fixed">공통</span></td><td class="ex"><q>꾸미지 않은 제대로 고른 맛</q> / <q>편지에는 정성껏…</q> / <q>From. 푸드프롬</q></td><td class="guide">제목·본문·서명 모두 고정</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- gif 1 -->
+    <section class="block block--gif">
+      <div class="num">▶</div>
+      <div class="block__body"><div class="gifline"><b>GIF 자리 ①</b><span class="chip edit">가변</span>
+        <span>라벨 예 <q class="ex">보글보글 끓는 곰탕 영상</q> · 실제 GIF는 웹 업로드 시 삽입</span></div></div>
+    </section>
+
+    <!-- ② review + intro -->
+    <section class="block">
+      <div class="num">2</div>
+      <div class="block__body">
+        <div class="block__head"><h3 class="block__title">리뷰 + 소구 인트로</h3>
+          <span class="block__sub">별점 · 리뷰 4 · 헤드라인 · 대표이미지</span></div>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>필드</th><th>구분</th><th>곰탕 예시</th><th>가이드</th></tr></thead>
+            <tbody>
+              <tr><td class="fname">리뷰 섹션 제목</td><td><span class="chip edit">가변</span></td><td class="ex"><q>고객 리뷰로 증명된 사골곰탕!</q></td><td class="guide">제품 키워드 반영, 1줄</td></tr>
+              <tr><td class="fname">리뷰 ①~④ 아이디</td><td><span class="chip edit">가변</span></td><td class="ex"><code>wopdn***</code> <code>elw39***</code> <code>ion89***</code> <code>tw*uss**</code></td><td class="guide">마스킹 처리</td></tr>
+              <tr><td class="fname">리뷰 ①~④ 내용</td><td><span class="chip edit">가변</span></td><td class="ex"><q>급히 국 끓여야 할때마다 꺼내먹는데…</q> 외 3건</td><td class="guide">각 2~3줄</td></tr>
+              <tr><td class="fname">소구 인트로 헤드라인</td><td><span class="chip edit">가변</span></td><td class="ex"><q>오랜 시간 끓일 필요 없이 간편하게 즐기는 깊은 사골의 맛!</q></td><td class="guide">2줄, 이미지 위 오버레이</td></tr>
+              <tr><td class="fname">대표 이미지</td><td><span class="chip img">이미지</span></td><td class="ex">풀샷</td><td class="guide">860w</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③④⑤ soguem combined -->
+    <section class="block">
+      <div class="num">3</div>
+      <div class="block__body">
+        <div class="block__head"><h3 class="block__title">소구점 01 · 02 · 03</h3>
+          <span class="block__sub">블록 3개 · 각각 넘버 + 제목 + 본문 + 이미지</span></div>
+        <p class="block__note">공통 구조: <b>넘버(01/02/03·고정)</b> + <span class="chip edit">가변</span> 제목 + <span class="chip edit">가변</span> 본문 + <span class="chip img">이미지</span>. 본문 강조어(예 <b>무려 100g</b>, <b>쫄깃한</b>)는 볼드/컬러. 소구점 개수는 제품별 2~4개로 블록 복제·삭제.</p>
+        <div class="tbl-scroll">
+          <table class="soguem">
+            <thead><tr><th>#</th><th>제목 (곰탕 예시)</th><th>본문 (곰탕 예시)</th></tr></thead>
+            <tbody>
+              <tr><td class="snum">01</td><td class="ex"><q>눈앞에 아롱아롱 아른거리는 쫄깃함, 귀한 '아롱사태' 가득!</q></td><td class="ex">소 한 마리에서 딱 700g 나오는 귀한 특수부위 아롱사태… 쫄깃한 아롱사태의 존재감이 제대로 살아납니다.</td></tr>
+              <tr><td class="snum">02</td><td class="ex"><q>깊고 진하게 우려낸 한우 사골 육수</q></td><td class="ex">한우 뼈를 8시간 이상 푹 우려낸 사골 육수만 담아… 일상의 힘을 보탭니다.</td></tr>
+              <tr><td class="snum">03</td><td class="ex"><q>유명 곰탕 맛집의 '특(特)' 사이즈를 집에서 편하게!</q></td><td class="ex">냉동 팩 형태로 되어있어… 이제 곰탕 먹을 때 고기 아껴 드시지 마세요.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- gif 2 -->
+    <section class="block block--gif">
+      <div class="num">▶</div>
+      <div class="block__body"><div class="gifline"><b>GIF 자리 ②</b><span class="chip edit">가변</span>
+        <span>라벨 예 <q class="ex">고기 뜨는 영상</q></span></div></div>
+    </section>
+
+    <!-- ⑥ cooking -->
+    <section class="block">
+      <div class="num">6</div>
+      <div class="block__body">
+        <div class="block__head"><h3 class="block__title">조리방법</h3>
+          <span class="block__sub">맛있게 먹는 법 · 3 STEP</span></div>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>필드</th><th>구분</th><th>곰탕 예시</th><th>가이드</th></tr></thead>
+            <tbody>
+              <tr><td class="fname">섹션 제목</td><td><span class="chip fixed">공통</span></td><td class="ex"><q>맛있게 먹는 조리방법</q></td><td class="guide">고정</td></tr>
+              <tr><td class="fname">STEP 1</td><td><span class="chip semi">반가변</span></td><td class="ex"><q>조리 전 해동은 필수</q> · 냉장/유수해동 안내</td><td class="guide">냉동식품 공통, 대개 유지</td></tr>
+              <tr><td class="fname">STEP 2</td><td><span class="chip edit">가변</span></td><td class="ex"><q>중불에서 10분 끓이기</q> · 제품 조리 안내</td><td class="guide">조리시간·제품명 교체</td></tr>
+              <tr><td class="fname">STEP 3</td><td><span class="chip edit">가변</span></td><td class="ex"><q>맛있는 '아롱아롱 고기곰탕' 완성!</q> · 마무리 팁</td><td class="guide">맛있는 「제품명」 완성! 형식</td></tr>
+              <tr><td class="fname">완성 이미지</td><td><span class="chip img">이미지</span></td><td class="ex">완성 연출컷</td><td class="guide">860w</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ nutrition -->
+    <section class="block">
+      <div class="num">7</div>
+      <div class="block__body">
+        <div class="block__head"><h3 class="block__title">영양정보</h3>
+          <span class="block__sub">성분표 + 제품정보</span></div>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>필드</th><th>구분</th><th>내용</th></tr></thead>
+            <tbody>
+              <tr><td class="fname">표 라벨</td><td><span class="chip fixed">공통</span></td><td class="guide">총 내용량당 / 기준치 비율 / 나트륨·탄수화물·당류·지방·트랜스지방·포화지방·콜레스트롤·단백질</td></tr>
+              <tr><td class="fname">수치</td><td><span class="chip edit">가변</span></td><td class="guide">예: 600g·410kcal, 나트륨 1000mg 50% … → 제품 실제 성분표로 전량 교체</td></tr>
+              <tr><td class="fname">제품정보</td><td><span class="chip edit">가변</span></td><td class="guide">제품명 · 식품유형 · 소비기한 · 원재료 및 함량 · 품목보고번호 · 내용량 · 포장재질 · 알러지/주의문구</td></tr>
+              <tr><td class="fname">브랜드 정보</td><td><span class="chip fixed">공통</span></td><td class="guide">제조원 · 판매원 · 보관방법 · 고객상담실 <code>070-8814-5892</code> · 분쟁해결/부정불량신고 문구 (대개 고정)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /spine -->
+
+  <hr class="rule">
+
+  <!-- workflow -->
+  <h2 class="sec">신제품 제작 워크플로우</h2>
+  <div class="flow">
+    <div class="step"><div></div><p><span class="who2 you">회원님</span><b>제품 정보 전달</b> — 제품명 · 간단설명 방향 · 소구점 3개 소재 · 리뷰(있으면) · 이미지 · 성분표</p></div>
+    <div class="step"><div></div><p><span class="who2">Claude</span>마스터(<code>3:197</code>) <b>복제</b> → <code>제품) 네이버 860</code> 생성, 이미지 교체, 소구점 개수 조정</p></div>
+    <div class="step"><div></div><p><span class="who2">Claude</span>제품 <b>전체 카피 작성</b> → 이 필드 맵 형식의 <b>완성 카피 시트</b> 전달</p></div>
+    <div class="step"><div></div><p><span class="who2 you">회원님</span>Figma에서 각 텍스트 노드에 <b>카피 붙여넣기</b> (폰트 보존)</p></div>
+    <div class="step"><div></div><p><span class="who2">Claude</span>네이버 확정 → <b>쿠팡</b>(780 축소본) → <b>11번가·G마켓</b>(프레임 합쳐 1장, GIF 제외) 파생</p></div>
+  </div>
+
+  <div class="foot">
+    <span>푸드프롬 상세페이지 템플릿 시스템 · 네이버 860 기준</span>
+    <span>원본 <code>곰탕 2:3176</code> 유지 · 마스터 <code>3:197</code></span>
+  </div>
+
+</div>
