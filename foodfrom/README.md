@@ -20,6 +20,7 @@
 | `foodfrom_fieldmap_guide.html` | 필드 맵 웹 가이드(Artifact 소스) |
 | `foodfrom_ttbi_copy.md` | '그 시절 떡볶이' 확정 카피 시트(붙여넣기용) |
 | `foodfrom_jokbal_qa.md` | 순살족발 검수·플랫폼 파생 기록(섹션/노드 맵, 11번가 규격, 자동화 한계) |
+| `foodfrom_sundaeguk_copy.md` | '속든든 순대국' 확정 카피 시트 + '고른 이유' 블록 + Figma 1차 노드 맵·남은 일 |
 
 ## 제작 방식 (폰트 제약)
 디자인에 쓰인 상용 폰트(Rix·Sandoll)가 Figma 클라우드/원격 MCP 환경에 없어, **텍스트 입력은 수작업**으로 진행(브랜드 폰트 보존). 구조 복제·이미지는 자동. Professional 플랜에선 자동화 불가(계정 폰트 업로드는 Enterprise 전용).
